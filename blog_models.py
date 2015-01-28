@@ -2,12 +2,15 @@ from peewee import *
 
 database = MySQLDatabase('MK_xunzhao', **{'user': 'root'})
 
+
 class UnknownField(object):
     pass
+
 
 class BaseModel(Model):
     class Meta:
         database = database
+
 
 class WpCommentmeta(BaseModel):
     comment = BigIntegerField(db_column='comment_id', index=True)
@@ -17,6 +20,7 @@ class WpCommentmeta(BaseModel):
 
     class Meta:
         db_table = 'wp_commentmeta'
+
 
 class WpComments(BaseModel):
     comment = BigIntegerField(db_column='comment_ID', primary_key=True)
@@ -38,6 +42,7 @@ class WpComments(BaseModel):
     class Meta:
         db_table = 'wp_comments'
 
+
 class WpLinks(BaseModel):
     link_description = CharField()
     link = BigIntegerField(db_column='link_id', primary_key=True)
@@ -56,6 +61,7 @@ class WpLinks(BaseModel):
     class Meta:
         db_table = 'wp_links'
 
+
 class WpOptions(BaseModel):
     autoload = CharField()
     option = BigIntegerField(db_column='option_id', primary_key=True)
@@ -65,6 +71,7 @@ class WpOptions(BaseModel):
     class Meta:
         db_table = 'wp_options'
 
+
 class WpPostmeta(BaseModel):
     meta = BigIntegerField(db_column='meta_id', primary_key=True)
     meta_key = CharField(index=True, null=True)
@@ -73,6 +80,7 @@ class WpPostmeta(BaseModel):
 
     class Meta:
         db_table = 'wp_postmeta'
+
 
 class WpPosts(BaseModel):
     id = BigIntegerField(db_column='ID', primary_key=True)
@@ -102,6 +110,7 @@ class WpPosts(BaseModel):
     class Meta:
         db_table = 'wp_posts'
 
+
 class WpPostviewsPlus(BaseModel):
     add_time = IntegerField()
     count = CharField(db_column='count_id', primary_key=True)
@@ -110,6 +119,7 @@ class WpPostviewsPlus(BaseModel):
 
     class Meta:
         db_table = 'wp_postviews_plus'
+
 
 class WpPrettyurls(BaseModel):
     disable_meta = IntegerField()
@@ -124,12 +134,14 @@ class WpPrettyurls(BaseModel):
     class Meta:
         db_table = 'wp_prettyurls'
 
+
 class WpSphCounter(BaseModel):
     counter = PrimaryKeyField(db_column='counter_id')
     max_doc = IntegerField(db_column='max_doc_id')
 
     class Meta:
         db_table = 'wp_sph_counter'
+
 
 class WpSphStats(BaseModel):
     date_added = DateTimeField()
@@ -140,6 +152,7 @@ class WpSphStats(BaseModel):
     class Meta:
         db_table = 'wp_sph_stats'
 
+
 class WpTermRelationships(BaseModel):
     object = BigIntegerField(db_column='object_id')
     term_order = IntegerField()
@@ -148,6 +161,7 @@ class WpTermRelationships(BaseModel):
     class Meta:
         db_table = 'wp_term_relationships'
         primary_key = CompositeKey('object', 'term_taxonomy')
+
 
 class WpTermTaxonomy(BaseModel):
     count = BigIntegerField()
@@ -160,6 +174,7 @@ class WpTermTaxonomy(BaseModel):
     class Meta:
         db_table = 'wp_term_taxonomy'
 
+
 class WpTerms(BaseModel):
     name = CharField(index=True)
     slug = CharField(index=True)
@@ -169,6 +184,7 @@ class WpTerms(BaseModel):
     class Meta:
         db_table = 'wp_terms'
 
+
 class WpUsermeta(BaseModel):
     meta_key = CharField(index=True, null=True)
     meta_value = TextField(null=True)
@@ -177,6 +193,7 @@ class WpUsermeta(BaseModel):
 
     class Meta:
         db_table = 'wp_usermeta'
+
 
 class WpUsers(BaseModel):
     id = BigIntegerField(db_column='ID', primary_key=True)
@@ -192,6 +209,7 @@ class WpUsers(BaseModel):
 
     class Meta:
         db_table = 'wp_users'
+
 
 class WpYarppRelatedCache(BaseModel):
     id = BigIntegerField(db_column='ID', index=True)
