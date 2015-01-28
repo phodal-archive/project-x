@@ -1,3 +1,5 @@
 peewee == 2.4.6
 python-wordpress-xmlrpc == 2.3
 mysql-python == 1.2.5
+falcon == 0.2.0b2 
+cython == 0.21.2
