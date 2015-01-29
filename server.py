@@ -26,7 +26,14 @@ class AllPostsResource():
         result = []
         blog_posts = WpPosts.select().where(WpPosts.post_status == "publish")
         for post in blog_posts:
-            result.append({"posts": post.post_content})
+            user = WpUsers.get(WpUsers.id == post.post_author)
+            result.append({
+                "author": user.display_name,
+                "id": post.id,
+                "comment": post.comment_count,
+                "title": post.post_title,
+                "posts": post.post_content
+            })
 
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(result)
