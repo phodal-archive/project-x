@@ -23,10 +23,10 @@ class AllPostsResource():
 
     @staticmethod
     def on_get(req, resp):
-        result = dict()
+        result = []
         blog_posts = WpPosts.select().where(WpPosts.post_status == "publish")
         for post in blog_posts:
-            result.update({"posts": post.post_content})
+            result.append({"posts": post.post_content})
 
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(result)
