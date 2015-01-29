@@ -37,7 +37,7 @@ class AllPostsResource():
                 "id": post.id,
                 "comment": post.comment_count,
                 "title": post.post_title,
-                "posts": post.post_content
+                "posts": post.post_content[:140]
             })
 
         resp.status = falcon.HTTP_200
