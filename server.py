@@ -24,7 +24,10 @@ class AllPostsResource():
     @staticmethod
     def on_get(req, resp):
         result = []
-        blog_posts = WpPosts.select().where(WpPosts.post_status == "publish")
+        blog_posts = WpPosts.select().where(
+            (WpPosts.post_status == "publish") &
+            (WpPosts.post_type == "post")
+        )
         for post in blog_posts:
             user = WpUsers.get(WpUsers.id == post.post_author)
             result.append({
