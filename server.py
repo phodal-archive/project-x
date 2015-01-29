@@ -23,11 +23,13 @@ class AllPostsResource():
 
     @staticmethod
     def on_get(req, resp):
+        store = {}
+        offset = req.get_param('offset', store=store)
         result = []
         blog_posts = WpPosts.select().where(
             (WpPosts.post_status == "publish") &
             (WpPosts.post_type == "post")
-        )
+        ).offset(offset).limit(10)
         for post in blog_posts:
             user = WpUsers.get(WpUsers.id == post.post_author)
             result.append({
