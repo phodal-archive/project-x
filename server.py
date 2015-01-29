@@ -1,3 +1,4 @@
+import json
 import falcon
 from blog_models import *
 
@@ -9,8 +10,10 @@ class PostsResource():
     @staticmethod
     def on_get(req, resp, post_id):
         post = WpPosts.get(WpPosts.id == post_id)
+        user = WpUsers.get(WpUsers.id == post.post_author)
         resp.status = falcon.HTTP_200
-        resp.body = post.post_content
+        resp.body = json.dumps({"post_content": post.post_content,
+                                "author": user.display_name})
 
 
 app = application = falcon.API()
