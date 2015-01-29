@@ -2,17 +2,18 @@ import falcon
 from blog_models import *
 
 
-class PostsResource:
+class PostsResource():
     def __init__(self):
         pass
 
     @staticmethod
-    def on_get(req, resp):
-        posts = WpPosts.get()
+    def on_get(req, resp, post_id):
+        post = WpPosts.get()
         resp.status = falcon.HTTP_200
-        resp.body = posts.post_content
+        resp.body = post.post_content
 
 
-app = falcon.API()
+app = application = falcon.API()
 
-app.add_route('/things', PostsResource())
+posts = PostsResource()
+app.add_route('/posts/{post_id}', posts)
