@@ -8,7 +8,7 @@ class PostsResource():
 
     @staticmethod
     def on_get(req, resp, post_id):
-        post = WpPosts.get()
+        post = WpPosts.get(WpPosts.id == post_id)
         resp.status = falcon.HTTP_200
         resp.body = post.post_content
 
