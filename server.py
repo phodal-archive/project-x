@@ -29,11 +29,11 @@ class AllPostsResource():
             result.update({"posts": post.post_content})
 
         resp.status = falcon.HTTP_200
-        resp.body = 'hello'
+        resp.body = json.dumps(result)
 
 
 posts = PostsResource()
 allPosts = AllPostsResource()
 
-app.add_route('/all/posts', allPosts)
 app.add_route('/posts/{post_id}', posts)
+app.add_route('/all/posts', allPosts)
