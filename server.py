@@ -54,13 +54,33 @@ class CommentsResource():
         comment = WpComments.get(WpComments.comment == comment_id)
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({"comment_author": comment.comment_author,
-                                "comment_post": comment.comment_post})
+                                "comment_content": comment.comment_content})
+
+
+class PostsCommentsResource():
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def on_get(req, resp, post_id):
+        result = []
+        comments = WpComments.select().where(WpComments.comment_post == post_id)
+        for comment in comments:
+            result.append({
+                "comment_author": comment.comment_author,
+                "comment_content": comment.comment_content
+            })
+        resp.status = falcon.HTTP_200
+        resp.body = json.dumps(result)
+
 
 
 posts = PostsResource()
 allPosts = AllPostsResource()
 commentsResource = CommentsResource()
+postsComments = PostsCommentsResource()
 
 app.add_route('/posts/{post_id}', posts)
+app.add_route('/posts/{post_id}/comments', postsComments)
 app.add_route('/comment/{comment_id}', commentsResource)
 app.add_route('/all/posts', allPosts)
