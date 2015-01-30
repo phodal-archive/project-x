@@ -1,10 +1,8 @@
 #X Project
 
-> WordPress as Editing
+一个以WordPress作为编辑，Falcon + Peewee作为发布的项目。
 
-and
-
-> Flask + Falcon as Publishing
+> A project basis on WordPress as Editing, Falcon as Publishing.
 
 start server
     
