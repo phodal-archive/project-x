@@ -18,18 +18,6 @@ class PostsResource():
                                 "author": user.display_name})
 
 
-class CommentsResource():
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def on_get(req, resp, comment_id):
-        comment = WpComments.get(WpComments.id == comment_id)
-        resp.status = falcon.HTTP_200
-        resp.body = json.dumps({"comment_author": comment.comment_author,
-                                "comment_post": comment.comment_post})
-
-
 class AllPostsResource():
     def __init__(self):
         pass
@@ -55,6 +43,18 @@ class AllPostsResource():
 
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(result)
+
+
+class CommentsResource():
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def on_get(req, resp, comment_id):
+        comment = WpComments.get(WpComments.comment == comment_id)
+        resp.status = falcon.HTTP_200
+        resp.body = json.dumps({"comment_author": comment.comment_author,
+                                "comment_post": comment.comment_post})
 
 
 posts = PostsResource()
