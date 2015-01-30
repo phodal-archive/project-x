@@ -4,6 +4,7 @@ from blog_models import *
 
 app = application = falcon.API()
 
+
 class PostsResource():
     def __init__(self):
         pass
@@ -15,6 +16,18 @@ class PostsResource():
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({"post_content": post.post_content,
                                 "author": user.display_name})
+
+
+class CommentsResource():
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def on_get(req, resp, post_id):
+        comment = WpPosts.get(WpComments.id == post_id)
+        resp.status = falcon.HTTP_200
+        resp.body = json.dumps({"comment_author": comment.comment_author,
+                                "comment_post": comment.comment_post})
 
 
 class AllPostsResource():
@@ -46,6 +59,8 @@ class AllPostsResource():
 
 posts = PostsResource()
 allPosts = AllPostsResource()
+commentsResource = CommentsResource()
 
 app.add_route('/posts/{post_id}', posts)
+app.add_route('/comment/{post_id}', commentsResource)
 app.add_route('/all/posts', allPosts)
