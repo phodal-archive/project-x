@@ -23,8 +23,8 @@ class CommentsResource():
         pass
 
     @staticmethod
-    def on_get(req, resp, post_id):
-        comment = WpPosts.get(WpComments.id == post_id)
+    def on_get(req, resp, comment_id):
+        comment = WpComments.get(WpComments.id == comment_id)
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({"comment_author": comment.comment_author,
                                 "comment_post": comment.comment_post})
@@ -62,5 +62,5 @@ allPosts = AllPostsResource()
 commentsResource = CommentsResource()
 
 app.add_route('/posts/{post_id}', posts)
-app.add_route('/comment/{post_id}', commentsResource)
+app.add_route('/comment/{comment_id}', commentsResource)
 app.add_route('/all/posts', allPosts)
