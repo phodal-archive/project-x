@@ -1,6 +1,6 @@
 mail = dict(
     server='',
-    port='',
+    port=587,
     login='',
     password = ''
 )
