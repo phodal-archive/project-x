@@ -1,5 +1,17 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="寻ta,寻他,寻她,寻它,带你找到你感兴趣的，或即将感兴趣的人、事、物。">
+    <meta name="author" content="Lucas Ou-Yang">
+    <title>{% block title %}寻ta驿站 | 寻ta,寻他,寻她,寻它,带你找到你感兴趣的，或即将感兴趣的人、事、物。{% endblock %}</title>
+    <meta name="keywords" content="flask,reddit,python,reddit-clone,nginx,lucas ou-yang">
+    {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+</head>
 
-{% block content %}
-    Hello, World
-{% endblock %}
+<body id="coming">
+</body>
+</html>
