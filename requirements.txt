@@ -1,3 +1,4 @@
+gevent == 1.0.1
 peewee == 2.4.6
 python-wordpress-xmlrpc == 2.3
 mysql-python == 1.2.5
