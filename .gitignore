@@ -61,3 +61,4 @@ docs/_build/
 target/
 
 step.md
+conf.py
