@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="寻ta,寻他,寻她,寻它,带你找到你感兴趣的，或即将感兴趣的人、事、物。">
+    <meta name="author" content="Lucas Ou-Yang">
+    <title>{% block title %}寻ta驿站 | 寻ta,寻他,寻她,寻它,带你找到你感兴趣的，或即将感兴趣的人、事、物。{% endblock %}</title>
+    <meta name="keywords" content="flask,reddit,python,reddit-clone,nginx,lucas ou-yang">
+    {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+<nav class="main-nav">
+    <div id="main-nav-wrapper">
+        <ul>
+            <li class="page_item"><a href="http://www.xuntayizhan.com/" title="寻ta驿站" rel="home"> 全部的ta</a></li>
+            <li class="page_item page-item-7"><a href="http://www.xuntayizhan.com/about/">关于寻ta</a></li>
+            <li class="page_item page-item-484"><a href="http://www.xuntayizhan.com/xun-zhao-ta/">寻TA APP</a></li>
+            <li class="page_item page-item-299"><a href="http://www.xuntayizhan.com/xunta-notes/">寻ta日记</a></li>
+            <li class="page_item page-item-268"><a href="http://www.xuntayizhan.com/suggest/">意见与建议</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="clear"></div>
+<div id="header"></div>
+<div id="wrap">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

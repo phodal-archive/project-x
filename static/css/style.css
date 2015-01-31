@@ -1,0 +1,260 @@
+/* colour styles : reset
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body  {
+  font-size:13px;
+  line-height:20px;
+  font-family: Helvetica, sans-serif;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+#wrap {
+  margin-left:3%;
+}
+
+/* Typohraphy
+--------------------------------------------------------------*/
+/* Fonts
+--------------------------------------------------------------*/
+h1,h2,h3,h4,h5 {
+  color: #111;
+}
+h1 {
+  font-size: 36px;
+  line-height: 46px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+}
+h2 a.front-link {
+  text-decoration: none;
+}
+h3 {
+  font-size: 18px;
+  line-height: 28px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 28px;
+}
+h5 {
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: normal;
+}
+h6 {
+  font-size: 13px;
+  line-height: 24px;
+  color: #858585;
+}
+p {
+  font-size: 14px;
+  color: #454545;
+  line-height: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+/* Lists -bullet points
+--------------------------------------------------------------*/
+ul li {
+  font-size: 12px;
+  color: #858585;
+  padding-left: 10px;
+}
+ol {
+  margin-left: 25px;
+}
+ol li {
+  font-size: 12px;
+  color: #858585;
+  padding-left: 10px;
+  margin-bottom: 7px;
+}
+ul,ol {
+  margin: 0 0 1.5em 3em;
+}
+ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+ol {
+  list-style: decimal;
+}
+ol li ol {
+  list-style-type: lower-alpha;
+}
+ol li ol li ol {
+  list-style-type: lower-roman;
+}
+ul ul,ol ol,ul ol,ol ul {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+hr {
+  background: url(./images/hr.jpg) top center no-repeat;
+  border: 0;
+  outline: 0;
+  clear: both;
+  height: 10px;
+}
+b,strong {
+  font-weight: bold;
+}
+/* Text link style
+--------------------------------------------------------------*/
+a:link {
+  color: #444444;
+  text-decoration: underline;
+}
+a:visited {
+  color: #111;
+  text-decoration: underline;
+}
+a:hover {
+  color: #111;
+  text-decoration: none;
+}
+a:active {
+  color: #444444;
+  text-decoration: none;
+}
+a:focus {
+  outline-style: none;
+}
+/* Main Navigation
+--------------------------------------------------------------*/
+#main-nav-wrapper {
+  background: #fff;
+  float: left;
+  position: relative;
+  width: 100%;
+  min-height: 42px;
+  max-height: 86px;
+  z-index: 2;
+}
+.main-nav {
+  display: block;
+  float: left;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+.main-nav ul {
+  padding: 5px 25px;
+  position: relative;
+  width: 960px;
+  margin-top: -1px;
+}
+.main-nav ul li {
+  display: inline;
+  float: left;
+  padding: 12px 12px;
+  position: relative;
+}
+.main-nav ul li a {
+  color: #999;
+  font-size: 13px;
+  text-decoration: none;
+}
+.main-nav ul li:hover a,.main-nav li.current-menu-item a,.main-nav li.current-post-parent a {
+  color: #111;
+}
+.main-nav ul li ul {
+  display: none;
+  z-index: 9999;
+}
+.main-nav ul ul li a:hover {
+  color: #111 !important;
+}
+.main-nav ul li:hover ul {
+  background: #fff;
+  -webkit-box-shadow: 0 3px 7px -2px #333;
+  box-shadow: 0 3px 7px -2px #333;
+  display: block;
+  margin-top: 5px;
+  padding: 5px;
+  position: absolute;
+  left: 0px;
+  top: 33px;
+  width: 150px;
+}
+.main-nav ul li:hover ul li {
+  padding: 4px;
+  position: relative;
+  width: 97%;
+}
+.main-nav ul ul li a {
+  color: #999 !important;
+  height: auto;
+  display: block;
+}
+.main-nav ul .sub-menu li,.main-nav ul .children li {
+  background: none;
+  border-bottom: 1px dotted #e8e8e8;
+  width: 100%;
+}
+.main-nav ul li:hover ul li ul {
+  display: none;
+}
+.main-nav ul li:hover ul li:hover ul {
+  border: none;
+  display: block;
+  margin: 0;
+  position: absolute;
+  left: 155px;
+  top: 0;
+  width: 150px;
+}
+#header {
+  padding-bottom: 95px;
+}
+
+#main-nav-wrapper,nav {
+  -webkit-box-shadow: 0 4px 15px -5px #555;
+  box-shadow: 0 4px 15px -5px #555;
+}
