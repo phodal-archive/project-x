@@ -1,11 +1,19 @@
 import falcon
-from flask import Flask
+from flask import Flask, render_template
 from gevent import monkey
 from gevent.pywsgi import WSGIServer
 
 from api.post import PostsResource, AllPostsResource, CommentsResource, PostsCommentsResource
 
 app = Flask(__name__, static_folder='static', static_url_path='')
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def not_found(error):
+    return render_template('500.html'), 500
 
 from frontends.views import mod as frontends_module
 app.register_blueprint(frontends_module)
