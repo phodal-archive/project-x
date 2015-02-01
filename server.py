@@ -22,6 +22,14 @@ app.config['DEBUG_TB_PANELS'] = (
 app.config['MONGODB_SETTINGS'] = {'DB': 'testing'}
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
+RECAPTCHA_USE_SSL = False
+RECAPTCHA_PUBLIC_KEY = '6LeYIbsSAAAAACRPIllxA7wvXjIE411PfdB2gt2J'
+RECAPTCHA_PRIVATE_KEY = '6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG'
+RECAPTCHA_OPTIONS = {'theme': 'white'}
+
+app.config['RECAPTCHA_PUBLIC_KEY'] = RECAPTCHA_PUBLIC_KEY
+app.config['RECAPTCHA_PRIVATE_KEY'] = RECAPTCHA_PRIVATE_KEY
+
 toolbar = DebugToolbarExtension(app)
 
 @app.errorhandler(404)
