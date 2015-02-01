@@ -2,7 +2,7 @@ import json
 
 import falcon
 
-from models.blog_models import WpPosts, WpUsers, WpComments
+from blog_models import WpPosts, WpUsers, WpComments
 
 
 class PostsResource():
