@@ -14,4 +14,4 @@ class RegisterForm(Form):
         EqualTo('password', message='Passwords must match')
     ])
     accept_tos = BooleanField('I accept the Terms of Service.', validators=[DataRequired()])
-    recaptcha = RecaptchaField()
+    # recaptcha = RecaptchaField()

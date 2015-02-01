@@ -13,22 +13,19 @@
 <form method="POST" action=".">
     {{ form.csrf_token }}
     <input type="hidden" name="next" value="{{ next }}"/>
-    {{ render_field(form.first_name, class="form-control", placeholder="username", autofocus="") }}
+    {{ render_field(form.first_name, class="form-control", placeholder="名", autofocus="") }}
     <br>
-    {{ render_field(form.last_name, class="form-control", placeholder="username", autofocus="") }}
+    {{ render_field(form.last_name, class="form-control", placeholder="姓", autofocus="") }}
     <br>
-    {{ render_field(form.email, class="form-control", placeholder="email") }}
+    {{ render_field(form.email, class="form-control", placeholder="邮箱") }}
     <br>
-    {{ render_field(form.blog, class="form-control", placeholder="email") }}
+    {{ render_field(form.password, class="form-control", placeholder="ming.pa55word") }}
     <br>
-    {{ render_field(form.password, class="form-control", placeholder="password") }}
+    {{ render_field(form.confirm, class="form-control", placeholder="ming.pa55word") }}
     <br>
-    {{ render_field(form.confirm, class="form-control", placeholder="confirm password") }}
-    <br>
-    Check to agree to <a href="">terms of services</a>
-    {{ render_field(form.accept_tos, class="form-control") }}
-    <label>ReCaptcha</label>
-    {{ form.recaptcha }}
+    {{ render_field(form.accept_tos, class="form-control") }} Check to agree to <a href="">terms of services</a>
+    <!--<label>ReCaptcha</label>-->
+    <!--{{ form.recaptcha }}-->
     <br>
     <button type="submit" value="Register" class="btn btn-primary">Register</button>
 </form>
