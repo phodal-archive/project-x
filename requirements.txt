@@ -7,3 +7,4 @@ cython == 0.21.2
 gunicorn == 19.1.1
 flask ==  0.10.1
 flask-sqlalchemy == 2.0
+flask-debugtoolbar == 0.9.2

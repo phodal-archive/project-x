@@ -1,11 +1,18 @@
 import falcon
 from flask import Flask, render_template
+from flask_debugtoolbar import DebugToolbarExtension
+
 from gevent import monkey
 from gevent.wsgi import WSGIServer
 
 from api.post import PostsResource, AllPostsResource, CommentsResource, PostsCommentsResource
 
 app = Flask(__name__, static_folder='static', static_url_path='')
+app.debug = True
+
+app.config['SECRET_KEY'] = 'I don"t know it'
+
+toolbar = DebugToolbarExtension(app)
 
 @app.errorhandler(404)
 def not_found(error):
