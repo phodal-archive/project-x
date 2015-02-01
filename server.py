@@ -6,7 +6,7 @@ from gevent.wsgi import WSGIServer
 
 
 app = Flask(__name__, static_folder='static', static_url_path='')
-app.debug = True
+app.debug = False
 
 app.config['SECRET_KEY'] = 'I don"t know it'
 app.config['DEBUG_TB_PANELS'] = (
