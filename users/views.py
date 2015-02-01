@@ -1,20 +1,15 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from flask_mongoengine.wtf.orm import model_form
 from werkzeug.utils import redirect
-from flask_wtf import Form
-from wtforms import StringField
-from wtforms.validators import DataRequired
-
+from users.models import User
 
 users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix='', static_folder='static')
 
+PostForm = model_form(User)
 
-class MyForm(Form):
-    name = StringField('name', validators=[DataRequired()])
-
-
-@users_mod.route('/submit', methods=('GET', 'POST'))
-def submit():
-    form = MyForm()
-    if form.validate_on_submit():
-        return redirect('/submit')
-    return render_template('submit.html', form=form)
+@users_mod.route('/register/account', methods=('GET', 'POST'))
+def add_post():
+    form = PostForm(request.form)
+    if request.method == 'POST' and form.validate():
+        return redirect('/register/success')
+    return render_template('register.html', form=form)

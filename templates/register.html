@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="/register/account">
+    {{ form.csrf_token }}
+    {{ form.email.label }} {{ form.email(size=50) }}
+    {{ form.last_name.label }} {{ form.last_name(size=50) }}
+    {{ form.first_name.label }} {{ form.first_name(size=50) }}
+    <input type="submit" value="Go">
+</form>
+{% endblock %}
