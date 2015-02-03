@@ -16,8 +16,6 @@ app.config.from_pyfile('config.cfg')
 babel = Babel(app)
 toolbar = DebugToolbarExtension(app)
 
-login_manager = LoginManager()
-
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
@@ -34,6 +32,7 @@ app.register_blueprint(sitemap_module)
 
 from users.models import db
 db.init_app(app)
+login_manager = LoginManager()
 login_manager.init_app(app)
 
 from users.views import users_mod
