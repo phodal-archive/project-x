@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template, request, flash, url_for, session
+from flask import Blueprint, render_template, request, flash, url_for, session, current_app
 from flask_babel import gettext
 from flask_login import current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,6 +16,9 @@ users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix
 
 @users_mod.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user:
+        return redirect(url_for('frontends.home'))
+
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user_obj = User()
@@ -36,13 +39,22 @@ def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
         password_hash = generate_password_hash(form.password.data)
-        print form.name.data, form.email.data, password_hash
         user = User(form.name.data, form.email.data, password_hash)
 
-        print user
-        user.save()
-        flash(gettext('Thanks for registering'))
-        return redirect('/account', form)
+        if user.is_exist(form.email.data):
+            try:
+                user.save()
+                if login_user(user, remember="no"):
+                    flash("Logged in!")
+                    return redirect('/')
+                else:
+                    flash("unable to log you in")
+
+            except:
+                flash("unable to register with that email address")
+        else:
+            flash("user already in here")
+
     return render_template('/user/register.html', form=form)
 
 

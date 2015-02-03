@@ -20,7 +20,6 @@ class User(UserMixin):
         return self.id
 
     def get_by_email(self, email):
-
         db_user = models.User.objects.get(email=email)
         if db_user:
             self.email = db_user.email
@@ -29,6 +28,13 @@ class User(UserMixin):
             return self
         else:
             return None
+
+    def is_exist(self, new_mail):
+        all_user = models.User.objects(email=new_mail).count()
+        if all_user >= 1:
+            return False
+        else:
+            return True
 
     def get_by_email_w_password(self, email):
 

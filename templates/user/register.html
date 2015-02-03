@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {%- block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 {% from "macros.html" import render_field %}
 <form method="POST" action="/register/account">
     {{ form.csrf_token }}
