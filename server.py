@@ -9,29 +9,7 @@ from gevent.wsgi import WSGIServer
 
 
 app = Flask(__name__, static_folder='static', static_url_path='')
-app.debug = False
-
-app.config['SECRET_KEY'] = 'I don"t know it'
-app.config['DEBUG_TB_PANELS'] = (
-    'flask.ext.debugtoolbar.panels.versions.VersionDebugPanel',
-    'flask.ext.debugtoolbar.panels.timer.TimerDebugPanel',
-    'flask.ext.debugtoolbar.panels.headers.HeaderDebugPanel',
-    'flask.ext.debugtoolbar.panels.request_vars.RequestVarsDebugPanel',
-    'flask.ext.debugtoolbar.panels.template.TemplateDebugPanel',
-    'flask.ext.debugtoolbar.panels.logger.LoggingPanel',
-    'flask.ext.mongoengine.panels.MongoDebugPanel'
-)
-
-app.config['MONGODB_SETTINGS'] = {'DB': 'testing'}
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-
-RECAPTCHA_USE_SSL = False
-RECAPTCHA_PUBLIC_KEY = '6LeYIbsSAAAAACRPIllxA7wvXjIE411PfdB2gt2J'
-RECAPTCHA_PRIVATE_KEY = '6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG'
-RECAPTCHA_OPTIONS = {'theme': 'white'}
-
-app.config['RECAPTCHA_PUBLIC_KEY'] = RECAPTCHA_PUBLIC_KEY
-app.config['RECAPTCHA_PRIVATE_KEY'] = RECAPTCHA_PRIVATE_KEY
+app.config.from_pyfile('config.cfg')
 
 toolbar = DebugToolbarExtension(app)
 
