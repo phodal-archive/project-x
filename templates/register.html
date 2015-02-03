@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--<form method="POST" action="/register/account">-->
-<!--{{ form.csrf_token }}-->
-<!--{{ form.email.label }} {{ form.email(size=50) }}-->
-<!--{{ form.last_name.label }} {{ form.last_name(size=50) }}-->
-<!--{{ form.first_name.label }} {{ form.first_name(size=50) }}-->
-<!--<input type="submit" value="Go">-->
-<!--</form>-->
-
 {% from "macros.html" import render_field %}
-<form method="POST" action=".">
+<form method="POST" action="/register/account">
     {{ form.csrf_token }}
     <input type="hidden" name="next" value="{{ next }}"/>
-    {{ render_field(form.first_name, class="form-control", placeholder="名", autofocus="") }}
-    <br>
-    {{ render_field(form.last_name, class="form-control", placeholder="姓", autofocus="") }}
-    <br>
-    {{ render_field(form.email, class="form-control", placeholder="邮箱") }}
-    <br>
-    {{ render_field(form.password, class="form-control", placeholder="ming.pa55word") }}
-    <br>
-    {{ render_field(form.confirm, class="form-control", placeholder="ming.pa55word") }}
-    <br>
-    {{ render_field(form.accept_tos, class="form-control") }} Check to agree to <a href="">terms of services</a>
-    <!--<label>ReCaptcha</label>-->
-    <!--{{ form.recaptcha }}-->
-    <br>
+    <fieldset>
+        {{ render_field(form.first_name, class="form-control", placeholder="名", autofocus="") }}
+    </fieldset>
+    <fieldset>
+        {{ render_field(form.last_name, class="form-control", placeholder="姓", autofocus="") }}
+    </fieldset>
+    <fieldset>
+        {{ render_field(form.email, class="form-control", placeholder="邮箱") }}
+    </fieldset>
+    <fieldset>
+        {{ render_field(form.password, class="form-control", placeholder="ming.pa55word") }}
+    </fieldset>
+    <fieldset>
+        {{ render_field(form.confirm, class="form-control", placeholder="ming.pa55word") }}
+    </fieldset>
+    <fieldset>
+        {{ render_field(form.accept_tos, class="form-control") }} Check to agree to <a href="">terms of services</a>
+        <!--<label>ReCaptcha</label>-->
+        <!--{{ form.recaptcha }}-->
+    </fieldset>
     <button type="submit" value="Register" class="btn btn-primary">Register</button>
 </form>
 {% endblock %}
