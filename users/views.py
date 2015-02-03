@@ -22,9 +22,9 @@ def load_user(user_id):
 def login():
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.objects(email=form.email.data).get()
-        if user and check_password_hash(user.password, form.password.data):
-            session['user_id'] = user.id
+        user = User.objects.get_or_404(email=form.email.data)
+        if user and check_password_hash(str(user.password), form.password.data):
+            # session['user_id'] = str(user.id)
 
             if 'next' in request.form and request.form['next']:
                 return redirect(request.form['next'])
@@ -45,9 +45,8 @@ def register():
                     blog="",
                     password=generate_password_hash(form.password.data))
         user.save()
-        print user
         flash(gettext('Thanks for registering'))
-        return redirect('/account', form=form)
+        return redirect('/account', form)
     return render_template('/user/register.html', form=form)
 
 @users_mod.route('/account', methods='GET')
