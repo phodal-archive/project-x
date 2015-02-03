@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
+import datetime
 
 from flask_mongoengine import MongoEngine
 
@@ -8,6 +9,8 @@ db = MongoEngine()
 
 class User(db.Document):
     email = db.StringField(required=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
+    name = db.StringField(max_length=50)
     password = db.StringField(required=True)
+    active = db.BooleanField(default=True)
+    isAdmin = db.BooleanField(default=False)
+    timestamp = db.DateTimeField(default=datetime.datetime.now())

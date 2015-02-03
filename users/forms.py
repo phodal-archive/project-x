@@ -9,8 +9,7 @@ from wtforms.validators import EqualTo, Email, DataRequired
 
 
 class RegisterForm(Form):
-    last_name = StringField(gettext('Last Name'), validators=[DataRequired()])
-    first_name = StringField(gettext('First Name'), validators=[DataRequired()])
+    name = StringField(gettext('Nick Name'), validators=[DataRequired()])
     email = StringField(gettext('Email'), validators=[DataRequired(), Email()])
     password = PasswordField(gettext('Password'), validators=[DataRequired()])
     confirm = PasswordField(gettext('Confirm'), validators=[
