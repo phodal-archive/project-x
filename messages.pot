@@ -28,25 +28,25 @@ msgstr "邮箱"
 
 #: users/forms.py:15
 msgid "Blog"
-msgstr ""
+msgstr "博客"
 
 #: users/forms.py:16
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: users/forms.py:17
 msgid "Confirm"
-msgstr ""
+msgstr "确认"
 
 #: users/forms.py:19
 msgid "Passwords must match"
-msgstr ""
+msgstr "密码不匹配"
 
 #: users/forms.py:21
 msgid "I accept the Terms of Service."
-msgstr ""
+msgstr "我同意服务条款"
 
 #: users/views.py:22
 msgid "Thanks for registering"
-msgstr ""
+msgstr "感觉注册"
 
