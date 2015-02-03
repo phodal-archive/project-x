@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_babel import Babel
 
 from gevent import monkey
 from gevent.wsgi import WSGIServer
@@ -11,6 +12,7 @@ from gevent.wsgi import WSGIServer
 app = Flask(__name__, static_folder='static', static_url_path='')
 app.config.from_pyfile('config.cfg')
 
+babel = Babel(app)
 toolbar = DebugToolbarExtension(app)
 
 @app.errorhandler(404)
