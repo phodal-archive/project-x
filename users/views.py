@@ -2,6 +2,7 @@
 #coding=utf-8
 
 from flask import Blueprint, render_template, request, flash
+from flask_babel import gettext
 from flask_mongoengine.wtf.orm import model_form
 from werkzeug.utils import redirect
 
@@ -17,6 +18,6 @@ PostForm = model_form(User)
 def add_post():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
-        flash('Thanks for registering')
+        flash(gettext('Thanks for registering'))
         return redirect('/register/success')
     return render_template('register.html', form=form)
