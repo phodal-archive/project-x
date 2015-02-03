@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#coding=utf-8
+
 from flask import Blueprint, render_template, request, flash
 from flask_mongoengine.wtf.orm import model_form
 from werkzeug.utils import redirect

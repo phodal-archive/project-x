@@ -1,5 +1,6 @@
- #!/usr/bin/python
- # -*- coding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from flask_wtf import Form
 from wtforms import PasswordField, BooleanField, StringField
 from wtforms.fields.html5 import URLField

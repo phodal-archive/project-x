@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#coding=utf-8
+
 from flask import send_from_directory, request, Blueprint
 
 mod = Blueprint('sitemap', __name__, static_folder='', static_url_path='/')
