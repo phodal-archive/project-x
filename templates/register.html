@@ -1,29 +1,29 @@
 {% extends "base.html" %}
 
-{% block content %}
+{%- block content %}
 {% from "macros.html" import render_field %}
 <form method="POST" action="/register/account">
     {{ form.csrf_token }}
     <input type="hidden" name="next" value="{{ next }}"/>
     <fieldset>
         {{ form.first_name.label }}
-        {{ render_field(form.first_name, class="form-control", placeholder="名", autofocus="") }}
+        {{ render_field(form.first_name, class="form-control", placeholder=_("Last Name") , autofocus="") }}
     </fieldset>
     <fieldset>
         {{ form.last_name.label }}
-        {{ render_field(form.last_name, class="form-control", placeholder="姓", autofocus="") }}
+        {{ render_field(form.last_name, class="form-control", placeholder=_("First Name"), autofocus="") }}
     </fieldset>
     <fieldset>
         {{ form.email.label }}
-        {{ render_field(form.email, class="form-control", placeholder="邮箱") }}
+        {{ render_field(form.email, class="form-control", placeholder=_("Email")) }}
     </fieldset>
     <fieldset>
         {{ form.password.label }}
-        {{ render_field(form.password, class="form-control", placeholder="ming.pa55word") }}
+        {{ render_field(form.password, class="form-control", placeholder="Password") }}
     </fieldset>
     <fieldset>
         {{ form.confirm.label }}
-        {{ render_field(form.confirm, class="form-control", placeholder="ming.pa55word") }}
+        {{ render_field(form.confirm, class="form-control", placeholder="Password") }}
     </fieldset>
     <fieldset>
         {{ form.accept_tos.label }}
@@ -33,4 +33,4 @@
     </fieldset>
     <button type="submit" value="Register" class="btn btn-primary">Register</button>
 </form>
-{% endblock %}
+{%- endblock %}

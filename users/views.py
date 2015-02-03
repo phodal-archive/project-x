@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, flash
 from flask_babel import gettext
 from flask_mongoengine.wtf.orm import model_form
 from werkzeug.utils import redirect
+from flask_babel import Babel, gettext as _
 
 from users.forms import RegisterForm
 from users.models import User
