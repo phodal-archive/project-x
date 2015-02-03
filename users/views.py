@@ -27,6 +27,10 @@ def register():
                     password=generate_password_hash(form.password.data))
         user.save()
         print user
-        flash(gettext('Thanks for registering'))
-        return redirect('/register/success')
+        flash('Thanks for registering')
+        return redirect('/account', form=form)
     return render_template('register.html', form=form)
+
+@users_mod.route('/account', methods='GET')
+def account(form):
+    return render_template('user/user.html', form=form)
