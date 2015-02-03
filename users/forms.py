@@ -20,3 +20,8 @@ class RegisterForm(Form):
     ])
     accept_tos = BooleanField(gettext('I accept the Terms of Service.'), validators=[DataRequired()])
     # recaptcha = RecaptchaField()
+
+
+class LoginForm(Form):
+    email = StringField(gettext('Email'), validators=[DataRequired(), Email()])
+    password = PasswordField(gettext('Password'), validators=[DataRequired()])

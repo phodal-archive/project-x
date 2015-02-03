@@ -4,6 +4,7 @@
 from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_babel import Babel
+from flask_login import LoginManager
 
 from gevent import monkey
 from gevent.wsgi import WSGIServer
@@ -14,6 +15,8 @@ app.config.from_pyfile('config.cfg')
 
 babel = Babel(app)
 toolbar = DebugToolbarExtension(app)
+
+login_manager = LoginManager()
 
 @app.errorhandler(404)
 def not_found(error):
@@ -31,6 +34,7 @@ app.register_blueprint(sitemap_module)
 
 from users.models import db
 db.init_app(app)
+login_manager.init_app(app)
 
 from users.views import users_mod
 app.register_blueprint(users_mod)
