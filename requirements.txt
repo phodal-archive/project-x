@@ -13,3 +13,4 @@ mongoengine == 0.8.7
 pymongo == 2.8
 flask-wtf == 0.11
 flask-oauthlib == 0.8.0
+flask-login == 0.2.11
