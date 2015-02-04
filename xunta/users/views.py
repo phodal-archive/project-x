@@ -18,9 +18,7 @@ users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix
 @users_mod.route("/login", methods=["GET", "POST"])
 @cache.cached(50)
 def login():
-    if current_user:
-        return redirect(url_for('frontends.home'))
-
+    
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user_obj = User()
@@ -80,11 +78,11 @@ def unauthorized_callback():
 
 
 @login_manager.user_loader
-def load_user(id):
-    if id is None:
+def load_user(user_id):
+    if user_id is None:
         redirect('/login')
     user = User()
-    user.get_by_id(id)
+    user.get_by_id(user_id)
     if user.is_active():
         return user
     else:
