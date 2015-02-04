@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from flask_login import login_required
+from articles.forms import PostForm
 
 from server import cache
 
@@ -13,3 +15,13 @@ articles_mod = Blueprint('articles', __name__, template_folder='templates', url_
 @cache.cached(50)
 def articles():
     return render_template("articles.html")
+
+@articles_mod.route("/create/articles", methods=('GET', 'POST'))
+@cache.cached(50)
+@login_required
+def articles():
+    form = PostForm(request.form)
+    if request.method == 'POST' and form.validate():
+        print "success create articles"
+
+    return render_template("/articles/create.html", form=form)

@@ -8,5 +8,7 @@ from wtforms.validators import Email, DataRequired
 
 
 class PostForm(Form):
-    name = StringField(gettext('Articles Name'), validators=[DataRequired()])
+    title = StringField(gettext('Articles title'), validators=[DataRequired()])
+    tag = StringField(gettext('Articles title'))
     description = StringField(gettext('Description'), validators=[DataRequired(), Email()])
+    author = StringField(gettext('Author'), validators=[DataRequired()])

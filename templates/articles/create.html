@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{%- block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% from "macros.html" import render_field %}
+<form method="POST" action="/articles/create">
+    {{ form.csrf_token }}
+    <input type="hidden" name="next" value="{{ next }}"/>
+    <fieldset>
+        {{ form.title.label }}
+        {{ render_field(form.title, class="form-control", placeholder=_("Title")) }}
+    </fieldset>
+    <fieldset>
+        {{ form.tag.label }}
+        {{ render_field(form.tag, class="form-control", placeholder=_("tag")) }}
+    </fieldset>
+    <fieldset>
+        {{ form.description.label }}
+        {{ render_field(form.description, class="form-control", placeholder="Some words") }}
+    </fieldset>
+    </fieldset>
+    <button type="submit" value="Post" class="btn btn-primary"> {{ _("Post") }}</button>
+</form>
+{%- endblock %}
