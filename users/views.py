@@ -29,7 +29,7 @@ def login():
                 return redirect(request.form['next'])
             return redirect(url_for('frontends.home'))
 
-        flash('Wrong email or password', 'danger')
+        flash(gettext('Wrong email or password', 'danger'))
         return redirect(request.args.get("next") or url_for("index"))
     return render_template("/user/login.html", form=form)
 
@@ -48,12 +48,12 @@ def register():
                     flash("Logged in!")
                     return redirect('/')
                 else:
-                    flash("unable to log you in")
+                    flash(gettext("unable to log you in"))
 
             except:
-                flash("unable to register with that email address")
+                flash(gettext("unable to register with that email address"))
         else:
-            flash("user already in here")
+            flash(gettext("user already in here"))
 
     return render_template('/user/register.html', form=form)
 
@@ -67,7 +67,7 @@ def account(form):
 @login_required
 def logout():
     logout_user()
-    flash("Logged out.")
+    flash(gettext("Logged out."))
     return redirect('/login')
 
 

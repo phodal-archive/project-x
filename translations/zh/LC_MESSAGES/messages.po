@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-03 10:35+0800\n"
-"PO-Revision-Date: 2015-02-03 10:34+0800\n"
+"POT-Creation-Date: 2015-02-04 09:07+0800\n"
+"PO-Revision-Date: 2015-02-04 09:07+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,43 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
-#: templates/register.html:10 users/forms.py:12
-msgid "Last Name"
-msgstr "姓"
+#: templates/user/login.html:28
+msgid "Login"
+msgstr "登陆"
 
-#: templates/register.html:14 users/forms.py:13
-msgid "First Name"
-msgstr "名"
+#: templates/user/register.html:20 users/forms.py:12
+msgid "Nick Name"
+msgstr "昵称"
 
-#: templates/register.html:18 users/forms.py:14
+#: templates/user/register.html:24 users/forms.py:13 users/forms.py:24
 msgid "Email"
 msgstr "邮箱"
 
-#: users/forms.py:15
-msgid "Blog"
-msgstr "博客"
+#: templates/user/register.html:40
+msgid "Register"
+msgstr "注册"
 
-#: users/forms.py:16
+#: users/forms.py:14 users/forms.py:25
 msgid "Password"
 msgstr "密码"
 
-#: users/forms.py:17
+#: users/forms.py:15
 msgid "Confirm"
-msgstr "确认"
+msgstr "确认密码"
 
-#: users/forms.py:19
+#: users/forms.py:17
 msgid "Passwords must match"
 msgstr "密码不匹配"
 
-#: users/forms.py:21
+#: users/forms.py:19
 msgid "I accept the Terms of Service."
-msgstr "我同意服务条款"
+msgstr "我同意"
 
-#: users/views.py:22
-msgid "Thanks for registering"
-msgstr "感觉注册"
+#: users/views.py:32
+msgid "Wrong email or password"
+msgstr ""
+
+#: users/views.py:51
+msgid "unable to log you in"
+msgstr ""
+
+#: users/views.py:54
+msgid "unable to register with that email address"
+msgstr ""
+
+#: users/views.py:56
+msgid "user already in here"
+msgstr ""
+
+#: users/views.py:70
+msgid "Logged out."
+msgstr ""
 
