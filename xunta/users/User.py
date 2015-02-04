@@ -1,6 +1,6 @@
 from flask_login import (UserMixin)
 
-import models
+from xunta.users import models
 
 
 class User(UserMixin):

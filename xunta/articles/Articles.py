@@ -1,4 +1,4 @@
-import models
+from xunta.articles import models
 
 
 class Article():

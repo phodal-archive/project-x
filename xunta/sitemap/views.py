@@ -2,7 +2,9 @@
 #coding=utf-8
 
 from flask import send_from_directory, request, Blueprint
-from server import cache
+
+from xunta import cache
+
 
 sitemap_mod = Blueprint('sitemap', __name__, static_folder='', static_url_path='/')
 

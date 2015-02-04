@@ -4,7 +4,8 @@ import datetime
 
 from flask_mongoengine import MongoEngine
 from mongoengine import ReferenceField, ListField
-from users import User
+
+from xunta.users import User
 
 db = MongoEngine()
 

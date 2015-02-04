@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template, request, flash, url_for, session, current_app
+from flask import Blueprint, render_template, request, flash, url_for
 from flask_babel import gettext
-from flask_login import current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required
+from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
-from server import login_manager, cache
-from users.User import User
 
-from users.forms import RegisterForm, LoginForm
+from xunta import login_manager, cache
+from xunta.users.User import User
+from xunta.users.forms import RegisterForm, LoginForm
+
 
 users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix='', static_folder='static')
 
