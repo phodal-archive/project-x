@@ -5,6 +5,7 @@ from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_babel import Babel
 from flask_login import LoginManager
+from flask_cache import Cache
 
 from gevent import monkey
 from gevent.wsgi import WSGIServer
@@ -15,6 +16,8 @@ app.config.from_pyfile('config.cfg')
 
 babel = Babel(app)
 toolbar = DebugToolbarExtension(app)
+
+cache = Cache(app)
 
 @app.errorhandler(404)
 def not_found(error):
