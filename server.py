@@ -27,11 +27,11 @@ def not_found(error):
 def not_found(error):
     return render_template('500.html'), 500
 
-from frontends.views import mod as frontends_module
-app.register_blueprint(frontends_module)
+from frontends.views import frontends_mod
+app.register_blueprint(frontends_mod)
 
-from sitemap.views import mod as sitemap_module
-app.register_blueprint(sitemap_module)
+from sitemap.views import sitemap_mod
+app.register_blueprint(sitemap_mod)
 
 from users.models import db
 db.init_app(app)
@@ -40,6 +40,10 @@ login_manager.init_app(app)
 
 from users.views import users_mod
 app.register_blueprint(users_mod)
+
+from articles.views import articles_mod
+app.register_blueprint(articles_mod)
+
 
 def main():
     monkey.patch_thread()
