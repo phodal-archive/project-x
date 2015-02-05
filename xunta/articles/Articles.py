@@ -1,5 +1,6 @@
 from xunta.articles import models
-from xunta.utils import slugify
+from slugify import slugify
+
 
 
 class Article():
