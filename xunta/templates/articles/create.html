@@ -12,7 +12,7 @@
 {% endwith %}
 
 {% from "macros.html" import render_field %}
-<form method="POST" action="/articles/create">
+<form method="POST" action="/create/articles">
     {{ form.csrf_token }}
     <input type="hidden" name="next" value="{{ next }}"/>
     <fieldset>
@@ -24,8 +24,8 @@
         {{ render_field(form.tag, class="form-control", placeholder=_("tag")) }}
     </fieldset>
     <fieldset>
-        {{ form.description.label }}
-        {{ render_field(form.description, class="form-control", placeholder="Some words") }}
+        {{ form.content.label }}
+        {{ render_field(form.content, class="form-control", placeholder="Some words") }}
     </fieldset>
     </fieldset>
     <button type="submit" value="Post" class="btn btn-primary"> {{ _("Post") }}</button>
