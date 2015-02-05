@@ -16,24 +16,19 @@ class Article():
     def save(self):
         slug = self.slug
         if not self.slug:
-            print "no function", self.title
             slug = slugify(self.title)
 
         articles = models.Article(title=self.title, description=self.description,
                                   content=self.content, tag=self.tag, author=self.author, slug=slug)
         articles.save()
-        print "new articles id = %s " % articles.id
-        self.id = articles.id
-        return self.id
+        return slug
 
 
     def get_all_articles(self):
         results = models.Article.objects()
-        print results
         return results
 
 
     def get_article_by_slug(self, slug):
         results = models.Article.objects.get(slug=slug)
-        print results
         return results

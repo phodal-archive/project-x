@@ -41,8 +41,7 @@ def create_articles():
         # article_tag = Tag(name=tag, description=tag)
         # article_tag.save()
         article = Article(description=content, tag=tag, title=title, content=content, author=current_user, slug=slug)
-        article.save()
-        print "try save"
-        return redirect(request.args.get("next") or url_for("index"))
+        url_slug = article.save()
+        return redirect("/articles/" + url_slug + "/")
 
     return render_template("/articles/create.html", form=form)
