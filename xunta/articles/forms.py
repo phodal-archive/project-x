@@ -10,4 +10,5 @@ from wtforms.validators import Email, DataRequired
 class ArticleForm(Form):
     title = StringField(gettext('Articles title'), validators=[DataRequired()])
     tag = StringField(gettext('Articles tag'))
+    slug = StringField(gettext('Slug'))
     content = TextAreaField(gettext('Content'), validators=[DataRequired()])

@@ -27,6 +27,10 @@
         {{ form.content.label }}
         {{ render_field(form.content, class="form-control", placeholder="Some words") }}
     </fieldset>
+    <fieldset>
+        {{ form.slug.label }}
+        {{ render_field(form.slug, class="form-control", placeholder="URL") }}
+    </fieldset>
     </fieldset>
     <button type="submit" value="Post" class="btn btn-primary"> {{ _("Post") }}</button>
 </form>

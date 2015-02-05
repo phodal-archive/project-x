@@ -19,6 +19,7 @@ class Tag(db.Document):
 class Article(db.DynamicDocument):
     description = db.StringField(max_length=300)
     # tag = ListField(ReferenceField(Tag))
+    slug = db.StringField(max_length=255, required=True)
     tag = db.StringField(max_length=300)
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)

@@ -19,7 +19,14 @@ def articles():
     article_obj = Article()
     all_articles = article_obj.get_all_articles()
     print all_articles
-    return render_template("/articles/articles.html", articles=all_articles)
+    return render_template("/articles/article_list.html", articles=all_articles)
+
+
+@articles_mod.route("/articles/<slug>/")
+def get_article(slug):
+    article_obj = Article()
+    article = article_obj.get_article_by_slug(slug)
+    return render_template("/articles/article_detail.html", article=article)
 
 
 @articles_mod.route("/create/articles", methods=('GET', 'POST'))
@@ -30,9 +37,10 @@ def create_articles():
         title = form.title.data
         content = form.content.data
         tag = form.tag.data
+        slug = form.slug.data
         # article_tag = Tag(name=tag, description=tag)
         # article_tag.save()
-        article = Article(description=content, tag=tag, title=title, content=content, author=current_user)
+        article = Article(description=content, tag=tag, title=title, content=content, author=current_user, slug=slug)
         article.save()
         print "try save"
         return redirect(request.args.get("next") or url_for("index"))
