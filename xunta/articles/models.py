@@ -5,12 +5,12 @@ import datetime
 from flask_mongoengine import MongoEngine
 from mongoengine import ListField, EmbeddedDocumentField
 
-from xunta.users import User
+from xunta.users.models import User
 
 db = MongoEngine()
 
 
-class Tag(db.Document):
+class Tag(db.EmbeddedDocument):
     name = db.StringField(max_length=50)
     description = db.StringField(max_length=300)
     timestamp = db.DateTimeField(default=datetime.datetime.now())

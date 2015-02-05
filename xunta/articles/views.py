@@ -23,12 +23,12 @@ def articles():
 @login_required
 def create_articles():
     form = ArticleForm(request.form)
-    print current_user.name
+    print current_user
     if request.method == 'POST' and form.validate():
-        title = form.title.data
-        content = form.content.data
-        article = Article(content, title, title, content, current_user)
-        article.save()
+        # title = form.title.data
+        # content = form.content.data
+        # article = Article(content, title, title, content, current_user)
+        # article.save()
         return redirect(request.args.get("next") or url_for("index"))
 
     return render_template("/articles/create.html", form=form)

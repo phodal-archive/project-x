@@ -7,7 +7,7 @@ from flask_mongoengine import MongoEngine
 db = MongoEngine()
 
 
-class User(db.Document):
+class User(db.EmbeddedDocument):
     email = db.StringField(required=True)
     name = db.StringField(max_length=50)
     password = db.StringField(required=True)
