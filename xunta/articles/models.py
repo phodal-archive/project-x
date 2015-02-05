@@ -16,11 +16,11 @@ class Tag(db.EmbeddedDocument):
     timestamp = db.DateTimeField(default=datetime.datetime.now())
 
 
-class Article(db.Document):
+class Article(db.DynamicDocument):
     description = db.StringField(max_length=300)
     tag = ListField(EmbeddedDocumentField(Tag))
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)
     author = ListField(EmbeddedDocumentField(User))
     create = db.DateTimeField(default=datetime.datetime.now())
-    update = db.DateTimeField(default=datetime.datetime.now())
+    update_at = db.DateTimeField(default=datetime.datetime.now())
