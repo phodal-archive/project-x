@@ -15,9 +15,11 @@ articles_mod = Blueprint('articles', __name__, template_folder='templates', url_
 
 
 @articles_mod.route("/articles")
-@cache.cached(50)
 def articles():
-    return render_template("/articles/articles.html")
+    article_obj = Article()
+    all_articles = article_obj.get_all_articles()
+    print all_articles
+    return render_template("/articles/articles.html", articles=all_articles)
 
 
 @articles_mod.route("/create/articles", methods=('GET', 'POST'))

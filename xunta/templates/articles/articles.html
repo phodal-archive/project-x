@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Articles
+Articles
 {% endblock %}
 
 {% block content %}
-    Articles
+Articles
+    {% for article in articles%}
+        {{ article.title }} {{ article.author }}
+        {{ article.description }}
+        {{ article.create }}
+        {{ article.update_at }}
+    {% endfor %}
 {% endblock %}

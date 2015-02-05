@@ -17,3 +17,9 @@ class Article():
         print "new articles id = %s " % articles.id
         self.id = articles.id
         return self.id
+
+
+    def get_all_articles(self):
+        results = models.Article.objects()
+        print results
+        return results
