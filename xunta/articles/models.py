@@ -10,7 +10,7 @@ from xunta.users.models import User
 db = MongoEngine()
 
 
-class Tag(db.EmbeddedDocument):
+class Tag(db.Document):
     name = db.StringField(max_length=50)
     description = db.StringField(max_length=300)
     timestamp = db.DateTimeField(default=datetime.datetime.now())
@@ -18,7 +18,8 @@ class Tag(db.EmbeddedDocument):
 
 class Article(db.Document):
     description = db.StringField(max_length=300)
-    tag = db.StringField(max_length=300)
+    # tag = ListField(ReferenceField(Tag))
+    tag = db.StringField(max_length=30)
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)
     author = ReferenceField(User)

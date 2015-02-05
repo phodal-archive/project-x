@@ -16,7 +16,6 @@ users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix
 
 
 @users_mod.route("/login", methods=["GET", "POST"])
-@cache.cached(50)
 def login():
     
     form = LoginForm(request.form)
@@ -35,7 +34,6 @@ def login():
 
 
 @users_mod.route('/register/account', methods=('GET', 'POST'))
-@cache.cached(50)
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():

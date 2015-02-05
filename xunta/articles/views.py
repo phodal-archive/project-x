@@ -8,7 +8,7 @@ from werkzeug.utils import redirect
 from xunta.articles.forms import ArticleForm
 
 from xunta import cache
-from xunta.articles.models import Article
+from xunta.articles.models import Article, Tag
 
 
 articles_mod = Blueprint('articles', __name__, template_folder='templates', url_prefix='', static_folder='static')
@@ -21,7 +21,6 @@ def articles():
 
 
 @articles_mod.route("/create/articles", methods=('GET', 'POST'))
-@cache.cached(50)
 @login_required
 def create_articles():
     form = ArticleForm(request.form)
@@ -30,11 +29,11 @@ def create_articles():
     if request.method == 'POST' and form.validate():
         title = form.title.data
         content = form.content.data
-        # article = Article(description=content, tag=title, title=title, content=content, author=current_user)
-        article = Article(description=content, tag=title, title=title, content=content)
-        print article
+        tag = form.tag.data
+        # article_tag = Tag(name=tag, description=tag)
+        # article_tag.save()
+        article = Article(description=content, tag=tag, title=title, content=content, author=current_user)
         article.save()
-        print "try save "
         return redirect(request.args.get("next") or url_for("index"))
 
     return render_template("/articles/create.html", form=form)
