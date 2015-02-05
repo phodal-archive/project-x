@@ -24,8 +24,6 @@ def articles():
 @login_required
 def create_articles():
     form = ArticleForm(request.form)
-    print current_user
-    print form.validate(), request.method
     if request.method == 'POST' and form.validate():
         title = form.title.data
         content = form.content.data
@@ -34,6 +32,7 @@ def create_articles():
         # article_tag.save()
         article = Article(description=content, tag=tag, title=title, content=content, author=current_user)
         article.save()
+        print "try save"
         return redirect(request.args.get("next") or url_for("index"))
 
     return render_template("/articles/create.html", form=form)

@@ -3,7 +3,7 @@
 import datetime
 
 from flask_mongoengine import MongoEngine
-from mongoengine import ListField, EmbeddedDocumentField, ReferenceField
+from mongoengine import ReferenceField
 
 from xunta.users.models import User
 
@@ -19,7 +19,7 @@ class Tag(db.Document):
 class Article(db.Document):
     description = db.StringField(max_length=300)
     # tag = ListField(ReferenceField(Tag))
-    tag = db.StringField(max_length=30)
+    tag = db.StringField(max_length=300)
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)
     author = ReferenceField(User)
