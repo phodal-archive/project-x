@@ -14,7 +14,7 @@ from xunta.articles.Articles import Article
 articles_mod = Blueprint('articles', __name__, template_folder='templates', url_prefix='', static_folder='static')
 
 
-@articles_mod.route("/articles")
+@articles_mod.route("/articles/")
 def articles():
     article_obj = Article()
     all_articles = article_obj.get_all_articles()
@@ -29,7 +29,7 @@ def get_article(slug):
     return render_template("/articles/article_detail.html", article=article)
 
 
-@articles_mod.route("/create/articles", methods=('GET', 'POST'))
+@articles_mod.route("/create/articles/", methods=('GET', 'POST'))
 @login_required
 def create_articles():
     form = ArticleForm(request.form)

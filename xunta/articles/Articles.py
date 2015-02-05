@@ -1,4 +1,5 @@
 from xunta.articles import models
+from xunta.utils import slugify
 
 
 class Article():
@@ -12,8 +13,13 @@ class Article():
         self.id = None
 
     def save(self):
+        slug = self.slug
+        if not self.slug:
+            print "no function", self.title
+            slug = slugify(self.title)
+
         articles = models.Article(title=self.title, description=self.description,
-                                  content=self.content, tag=self.tag, author=self.author, slug=self.slug)
+                                  content=self.content, tag=self.tag, author=self.author, slug=slug)
         articles.save()
         print "new articles id = %s " % articles.id
         self.id = articles.id

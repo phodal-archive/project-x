@@ -12,7 +12,7 @@
 {% endwith %}
 
 {% from "macros.html" import render_field %}
-<form method="POST" action="/create/articles">
+<form method="POST" action="/create/articles/">
     {{ form.csrf_token }}
     <input type="hidden" name="next" value="{{ next }}"/>
     <fieldset>
