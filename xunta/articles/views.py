@@ -8,7 +8,7 @@ from werkzeug.utils import redirect
 from xunta.articles.forms import ArticleForm
 
 from xunta import cache
-from xunta.articles.models import Article, Tag
+from xunta.articles.Articles import Article
 
 
 articles_mod = Blueprint('articles', __name__, template_folder='templates', url_prefix='', static_folder='static')

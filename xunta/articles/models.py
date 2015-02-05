@@ -16,12 +16,13 @@ class Tag(db.Document):
     timestamp = db.DateTimeField(default=datetime.datetime.now())
 
 
-class Article(db.Document):
+class Article(db.DynamicDocument):
     description = db.StringField(max_length=300)
     # tag = ListField(ReferenceField(Tag))
     tag = db.StringField(max_length=300)
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)
-    author = ReferenceField(User)
+    # author = ReferenceField(User)
+    author = ""
     create = db.DateTimeField(default=datetime.datetime.now())
     update_at = db.DateTimeField(default=datetime.datetime.now())
