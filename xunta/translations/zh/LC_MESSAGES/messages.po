@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-04 09:07+0800\n"
-"PO-Revision-Date: 2015-02-04 09:07+0800\n"
+"POT-Creation-Date: 2015-02-06 22:10+0800\n"
+"PO-Revision-Date: 2015-02-06 22:11+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,9 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
+#: articles/forms.py:11 event/forms.py:11
+msgid "Articles title"
+msgstr "标题"
+
+#: articles/forms.py:12 event/forms.py:12
+msgid "Articles tag"
+msgstr "标签"
+
+#: articles/forms.py:13 event/forms.py:13
+msgid "Slug"
+msgstr "链接"
+
+#: articles/forms.py:14 event/forms.py:14
+msgid "Content"
+msgstr "内容"
+
+#: articles/forms.py:18 event/forms.py:18
+msgid "Comment title"
+msgstr "标题"
+
+#: templates/articles/create.html:20
+msgid "Title"
+msgstr "标题"
+
+#: templates/articles/create.html:24
+msgid "tag"
+msgstr "标签"
+
+#: templates/articles/create.html:35
+msgid "Post"
+msgstr "发表"
+
 #: templates/user/login.html:28
 msgid "Login"
-msgstr "登陆"
+msgstr "登入"
 
 #: templates/user/register.html:20 users/forms.py:12
 msgid "Nick Name"
@@ -52,21 +84,21 @@ msgstr "我同意"
 
 #: users/views.py:32
 msgid "Wrong email or password"
-msgstr ""
+msgstr "错误的邮箱或者密码"
 
-#: users/views.py:51
+#: users/views.py:50
 msgid "unable to log you in"
-msgstr ""
+msgstr "您无法入住"
 
-#: users/views.py:54
+#: users/views.py:53
 msgid "unable to register with that email address"
-msgstr ""
+msgstr "已经有客官使用了这个邮箱，您是不是已经入住了?"
 
-#: users/views.py:56
+#: users/views.py:55
 msgid "user already in here"
-msgstr ""
+msgstr "您已经入住了!"
 
-#: users/views.py:70
+#: users/views.py:73
 msgid "Logged out."
-msgstr ""
+msgstr "出去走走"
 
