@@ -14,15 +14,16 @@ articles_mod = Blueprint('articles', __name__, template_folder='templates', url_
 
 
 @articles_mod.route("/articles/")
-@cache.cached(50)
+@cache.cached(1000)
 def articles():
     article_obj = Article()
     all_articles = article_obj.get_all_articles()
-    return render_template("/articles/article_list.html", articles=all_articles)
+    user = current_user.get_mongo_doc()
+    return render_template("/articles/article_list.html", articles=all_articles, current_user=user)
 
 
 @articles_mod.route("/articles/<slug>/")
-@cache.cached(50)
+@cache.cached(100)
 def get_article(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
@@ -46,6 +47,7 @@ def save_tag(tag):
 @login_required
 def create_articles():
     form = ArticleForm(request.form)
+    user = current_user.get_mongo_doc()
     if request.method == 'POST' and form.validate():
         title = form.title.data
         content = form.content.data
@@ -53,11 +55,10 @@ def create_articles():
         slug = form.slug.data
 
         tag = save_tag(tag)
-        user = current_user.get_mongo_doc()
 
         article = Article(description=content, tag=tag, title=title, content=content, author=user, slug=slug)
         print article
         url_slug = article.save()
         return redirect("/articles/" + url_slug + "/")
 
-    return render_template("/articles/create.html", form=form)
+    return render_template("/articles/create.html", form=form, current_user=user)
