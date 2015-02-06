@@ -23,10 +23,14 @@ class Article(db.DynamicDocument):
     tag = db.StringField(max_length=300)
     title = db.StringField(max_length=10000)
     content = db.StringField(max_length=300)
-    # author = ReferenceField(User)
-    author = ""
+    author = ReferenceField(User)
     create = db.DateTimeField(default=datetime.datetime.now())
     update_at = db.DateTimeField(default=datetime.datetime.now())
+
+
+class Vote(db.EmbeddedDocument):
+    user = ReferenceField(User, required=True)
+    up = db.BooleanField(required=True, default=True)
 
 
 class Comments(db.EmbeddedDocument):
@@ -37,8 +41,3 @@ class Comments(db.EmbeddedDocument):
     vote = db.IntField(required=True, default=0)
     votes = db.ListField(EmbeddedDocumentField(Vote))
     created_at = db.DateTimeField(default=datetime.datetime.now)
-
-
-class Vote(db.EmbeddedDocument):
-    user = ReferenceField(User, required=True)
-    up = db.BooleanField(required=True, default=True)

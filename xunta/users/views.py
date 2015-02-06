@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template, request, flash, url_for
+from flask import Blueprint, render_template, request, flash, url_for, g
 from flask_babel import gettext
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
-from xunta import login_manager, cache
+from xunta import login_manager, cache, app
 from xunta.users.User import User
 from xunta.users.forms import RegisterForm, LoginForm
 
@@ -61,6 +61,10 @@ def register():
 def account(form):
     return render_template('/user/user.html', form=form)
 
+
+@app.before_request
+def before_request():
+    g.user = current_user
 
 @users_mod.route("/logout")
 @login_required
