@@ -4,6 +4,7 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from werkzeug.utils import redirect
+from xunta import cache
 
 from xunta.articles.forms import ArticleForm
 from xunta.articles.Articles import Article, Tag
@@ -13,6 +14,7 @@ articles_mod = Blueprint('articles', __name__, template_folder='templates', url_
 
 
 @articles_mod.route("/articles/")
+@cache.cached(50)
 def articles():
     article_obj = Article()
     all_articles = article_obj.get_all_articles()
@@ -20,6 +22,7 @@ def articles():
 
 
 @articles_mod.route("/articles/<slug>/")
+@cache.cached(50)
 def get_article(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
