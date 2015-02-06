@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 from werkzeug.utils import redirect
 
 from xunta.articles.forms import ArticleForm
-from xunta.articles.Articles import Article
+from xunta.articles.Articles import Article, Tag
 
 
 articles_mod = Blueprint('articles', __name__, template_folder='templates', url_prefix='', static_folder='static')
@@ -33,6 +33,12 @@ def get_comment(slug):
     return render_template("/articles/article_detail.html", article=article)
 
 
+def save_tag(tag):
+    article_tag = Tag(name=tag, description=tag)
+    article_tag.save()
+    return article_tag.get_mongo_doc()
+
+
 @articles_mod.route("/create/articles/", methods=('GET', 'POST'))
 @login_required
 def create_articles():
@@ -42,10 +48,12 @@ def create_articles():
         content = form.content.data
         tag = form.tag.data
         slug = form.slug.data
-        # article_tag = Tag(name=tag, description=tag)
-        # article_tag.save()
+
+        tag = save_tag(tag)
         user = current_user.get_mongo_doc()
+
         article = Article(description=content, tag=tag, title=title, content=content, author=user, slug=slug)
+        print article
         url_slug = article.save()
         return redirect("/articles/" + url_slug + "/")
 
