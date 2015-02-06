@@ -2,7 +2,7 @@
 
 start server
     
-    gunicorn server:app
+     gunicorn xunta.wsgi --log-file=xunta.log
     
 test
     
