@@ -5,11 +5,12 @@ Articles
 {% endblock %}
 
 {% block content %}
-    <div class="articles">
-        {% for article in articles%}
-            <h2><a href="/articles/{{ article.slug }}">{{ article.title }}</a></h2><span>{{ article.author }}</span><span>{{ article.create }}</span>
-            <p>{{ article.description }}</p>
-            {{ article.update_at }}
-        {% endfor %}
-    </div>
+<div class="articles">
+    {% for article in articles%}
+    <h2><a href="/articles/{{ article.slug }}">{{ article.title }}</a></h2><span>{{ article.author }}</span><span>{{ article.create }}</span>
+
+    <p>{{ article.description }}</p>
+    {{ article.update_at }}
+    {% endfor %}
+</div>
 {% endblock %}
