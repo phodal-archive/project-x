@@ -24,7 +24,7 @@ class TestViews(TestCase):
             self.assertStatus(self.client.get("/logout"), 302)
 
             self.assertStatus(self.client.get("/articles"), 301)
-            # self.assertStatus(self.client.get("/articles/"), 301)
+            self.assertStatus(self.client.get("/articles/"), 200)
 
     # def test_bad_manually(self):
         # with self.twill as t:

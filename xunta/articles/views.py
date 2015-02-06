@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, g
 from flask_login import login_required, current_user
 from werkzeug.utils import redirect
 from xunta import cache
@@ -18,7 +18,9 @@ articles_mod = Blueprint('articles', __name__, template_folder='templates', url_
 def articles():
     article_obj = Article()
     all_articles = article_obj.get_all_articles()
-    user = current_user.get_mongo_doc()
+    user = current_user
+    if current_user.is_authenticated():
+        user = current_user.username
     return render_template("/articles/article_list.html", articles=all_articles, current_user=user)
 
 
