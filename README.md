@@ -1,5 +1,6 @@
 #X Project
 
+[![Build Status](https://travis-ci.org/phodal/project-x.svg?branch=master)](https://travis-ci.org/phodal/project-x)
 [![Coverage Status](https://coveralls.io/repos/phodal/project-x/badge.svg?branch=master)](https://coveralls.io/r/phodal/project-x?branch=master)
 
 start server
