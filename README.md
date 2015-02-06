@@ -1,5 +1,7 @@
 #X Project
 
+[![Coverage Status](https://coveralls.io/repos/phodal/project-x/badge.svg?branch=master)](https://coveralls.io/r/phodal/project-x?branch=master)
+
 start server
     
     gunicorn xunta.wsgi --log-file=xunta.log
