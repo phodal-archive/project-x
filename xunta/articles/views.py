@@ -26,6 +26,13 @@ def get_article(slug):
     return render_template("/articles/article_detail.html", article=article)
 
 
+@articles_mod.route("/articles/<slug>/comments", methods=('GET', 'POST'))
+def get_comment(slug):
+    article_obj = Article()
+    article = article_obj.get_article_by_slug(slug)
+    return render_template("/articles/article_detail.html", article=article)
+
+
 @articles_mod.route("/create/articles/", methods=('GET', 'POST'))
 @login_required
 def create_articles():

@@ -34,10 +34,9 @@ class Vote(db.EmbeddedDocument):
 
 
 class Comments(db.EmbeddedDocument):
-    # article = ReferenceField(Article)
+    article = ReferenceField(Article)
     body = db.StringField(max_length=300)
-    # user = ReferenceField(User)
-    # comments = ListField(EmbeddedDocumentField(Comment))
+    user = ReferenceField(User)
     vote = db.IntField(required=True, default=0)
     votes = db.ListField(EmbeddedDocumentField(Vote))
     created_at = db.DateTimeField(default=datetime.datetime.now)
