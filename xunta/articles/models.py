@@ -3,7 +3,7 @@
 import datetime
 
 from flask_mongoengine import MongoEngine
-from mongoengine import ReferenceField
+from mongoengine import ReferenceField, EmbeddedDocumentField
 
 from xunta.users.models import User
 
@@ -27,3 +27,18 @@ class Article(db.DynamicDocument):
     author = ""
     create = db.DateTimeField(default=datetime.datetime.now())
     update_at = db.DateTimeField(default=datetime.datetime.now())
+
+
+class Comments(db.EmbeddedDocument):
+    # article = ReferenceField(Article)
+    body = db.StringField(max_length=300)
+    # user = ReferenceField(User)
+    # comments = ListField(EmbeddedDocumentField(Comment))
+    vote = db.IntField(required=True, default=0)
+    votes = db.ListField(EmbeddedDocumentField(Vote))
+    created_at = db.DateTimeField(default=datetime.datetime.now)
+
+
+class Vote(db.EmbeddedDocument):
+    user = ReferenceField(User, required=True)
+    up = db.BooleanField(required=True, default=True)
