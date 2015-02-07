@@ -1,0 +1,16 @@
+extend_with require
+require success
+
+setlocal init_url __url__
+config use_tidy 0
+
+extend_with formfill
+
+showforms
+formclear 1
+fv 1 name test
+fv 1 email test@tes.com
+fv 1 password test
+fv 1 confirm test
+fv 1 accept_tos true
+submit 1
