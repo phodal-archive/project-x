@@ -20,7 +20,7 @@ def articles():
     all_articles = article_obj.get_all_articles()
     user = current_user
     if current_user.is_authenticated():
-        user = current_user.username
+        user = user.get_mongo_doc()
     return render_template("/articles/article_list.html", articles=all_articles, current_user=user)
 
 
