@@ -32,6 +32,6 @@
         {{ render_field(form.slug, class="form-control", placeholder="URL") }}
     </fieldset>
     </fieldset>
-    <button type="submit" value="Post" class="btn btn-primary"> {{ _("Post") }}</button>
+    <input type="submit" name="post" value='{{ _("Post") }}' class="btn btn-primary">
 </form>
 {%- endblock %}
