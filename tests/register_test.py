@@ -28,6 +28,8 @@ class TestViews(TestCase):
             self.assertStatus(self.client.get("/articles"), 301)
             self.assertStatus(self.client.get("/articles/"), 200)
 
+            self.assertStatus(self.client.get("/404"), 404)
+
     def test_create_account(self):
         with self.twill as t:
             url = self.twill.url("/register/account")

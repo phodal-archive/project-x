@@ -23,7 +23,7 @@ def not_found(error):
 
 
 @app.errorhandler(500)
-def not_found(error):
+def server_error(error):
     return render_template('500.html'), 500
 
 
@@ -48,7 +48,3 @@ app.register_blueprint(users_mod)
 from xunta.articles.views import articles_mod
 
 app.register_blueprint(articles_mod)
-
-if __name__ == '__main__':
-    print 'We are running flask via main()'
-    app.run()
