@@ -4,7 +4,7 @@
 from twill.browser import TwillException
 
 from flask_testing import TestCase, Twill
-from twill.commands import formclear, fv, submit, showforms, show
+from twill.commands import formclear, fv, submit, showforms, show, formaction
 import twilltestlib
 
 from xunta import app
@@ -28,7 +28,12 @@ class TestViews(TestCase):
             self.assertStatus(self.client.get("/articles"), 301)
             self.assertStatus(self.client.get("/articles/"), 200)
 
-    # def test_create_account(self):
-        # with self.twill as t:
-            # url = self.twill.url("/register/account")
-            # twilltestlib.execute_twill_script('tests/register.twill', initial_url=url)
+    def test_create_account(self):
+        with self.twill as t:
+            url = self.twill.url("/register/account")
+            twilltestlib.execute_twill_script('tests/register.twill', initial_url=url)
+
+    def test_login_account(self):
+        with self.twill as t:
+            url = self.twill.url("/login")
+            twilltestlib.execute_twill_script('tests/login.twill', initial_url=url)

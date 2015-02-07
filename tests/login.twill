@@ -8,11 +8,7 @@ extend_with formfill
 
 showforms
 formclear 1
-fv 1 name test
 fv 1 email test@tes.com
 fv 1 password test
-fv 1 confirm test
-fv 1 accept_tos true
 formaction 1 __url__
 submit
-
