@@ -4,9 +4,15 @@
 import unittest
 
 from selenium import webdriver
+from flask_testing import LiveServerTestCase
+from xunta import app
 
 
-class Account(unittest.TestCase):
+class Account(LiveServerTestCase):
+    def create_app(self):
+        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        return app
+
     def setUp(self):
         self.driver = webdriver.Firefox()
 
@@ -33,7 +39,11 @@ class Account(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-class Login(unittest.TestCase):
+class Login(LiveServerTestCase):
+    def create_app(self):
+        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        return app
+
     def setUp(self):
         self.driver = webdriver.Firefox()
 
