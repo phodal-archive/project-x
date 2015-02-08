@@ -1,3 +1,3 @@
 #!/bin/sh
 source /home/www/MyXunta/bin/activate
-nohup /home/www/MyXunta/bin/gunicorn server:app -k gevent&
+nohup gunicorn xunta.wsgi --log-file=xunta.log --workers=2 -k gevent
