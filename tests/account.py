@@ -2,8 +2,9 @@
 # coding=utf-8
 
 import unittest
+
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+
 
 class Account(unittest.TestCase):
     def setUp(self):
