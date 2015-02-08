@@ -4,7 +4,7 @@ python:
 # command to install dependencies
 install:
  - pip install -r requirements.txt
- - pip install coveralls
+ - pip install -r test-requirements.txt
 # command to run tests
 services: mongodb
 script:

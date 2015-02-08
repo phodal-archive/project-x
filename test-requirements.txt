@@ -1,0 +1,6 @@
+cssselect == 0.9.1
+lxml == 3.4.1
+flask-testing == 0.4.2
+twill == 1.8.0
+requests == 2.5.1
+nose == 1.3.4
