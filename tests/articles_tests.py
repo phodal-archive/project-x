@@ -36,6 +36,7 @@ class Articles(unittest.TestCase):
         submit_button = driver.find_element_by_name('post')
         submit_button.click()
         self.assertIn("http://127.0.0.1:5000/articles/hello-world", driver.current_url)
+        assert "this is a test" in driver.title
 
     def tearDown(self):
         self.driver.close()
