@@ -37,10 +37,16 @@ class Login(unittest.TestCase):
         self.driver = webdriver.Firefox()
 
     def test_create_articles_redirect(self):
-        url = "http://127.0.0.1:5000/create/articles"
+        url = "http://127.0.0.1:5000/login"
         driver = self.driver
         driver.get(url)
-        self.assertIn("http://127.0.0.1:5000/login", driver.current_url)
+        email = driver.find_elements_by_xpath("//input[@name='email']")[0]
+        email.send_keys("selenium@example.com")
+        password = driver.find_elements_by_xpath("//input[@name='password']")[0]
+        password.send_keys("selenium@example.com")
+        submit_button = driver.find_element_by_name('login')
+        submit_button.click()
+        self.assertIn("http://127.0.0.1:5000", driver.current_url)
 
     def tearDown(self):
         self.driver.close()
