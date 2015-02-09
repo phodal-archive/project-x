@@ -95,3 +95,19 @@ input[type="checkbox"].checkbox {
     margin: 5px 6px 8px 0;
 }
 
+.logo {
+    background: url("../xunta.png") no-repeat;
+    width:128px;
+    height:128px;
+    top:20%;
+    position: relative;
+}
+
+.intro {
+    height:450px;
+}
+
+#wrapper {
+    width:960px;
+    margin: 0 auto;
+}
