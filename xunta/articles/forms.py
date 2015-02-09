@@ -4,7 +4,7 @@ from flask_babel import gettext
 
 from flask_wtf import Form
 from wtforms import StringField, TextAreaField
-from wtforms.validators import Email, DataRequired
+from wtforms.validators import DataRequired
 
 
 class ArticleForm(Form):

@@ -25,11 +25,11 @@
     </fieldset>
     <fieldset>
         {{ form.content.label }}
-        {{ render_field(form.content, class="form-control", placeholder="Some words") }}
+        {{ render_field(form.content, class="form-control", placeholder=_("Some words")) }}
     </fieldset>
     <fieldset>
         {{ form.slug.label }}
-        {{ render_field(form.slug, class="form-control", placeholder="URL") }}
+        {{ render_field(form.slug, class="form-control", placeholder=_("URL")) }}
     </fieldset>
     </fieldset>
     <input type="submit" name="post" value='{{ _("Post") }}' class="btn btn-green">

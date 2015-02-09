@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-06 22:10+0800\n"
+"POT-Creation-Date: 2015-02-09 20:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: articles/forms.py:11 event/forms.py:11
+#: articles/forms.py:11
 msgid "Articles title"
 msgstr ""
 
-#: articles/forms.py:12 event/forms.py:12
+#: articles/forms.py:12
 msgid "Articles tag"
 msgstr ""
 
-#: articles/forms.py:13 event/forms.py:13
+#: articles/forms.py:13
 msgid "Slug"
 msgstr ""
 
-#: articles/forms.py:14 event/forms.py:14
+#: articles/forms.py:14
 msgid "Content"
 msgstr ""
 
-#: articles/forms.py:18 event/forms.py:18
+#: articles/forms.py:18
 msgid "Comment title"
 msgstr ""
 
@@ -45,12 +45,24 @@ msgstr ""
 msgid "tag"
 msgstr ""
 
+#: templates/articles/create.html:28
+msgid "Some words"
+msgstr ""
+
+#: templates/articles/create.html:32
+msgid "URL"
+msgstr ""
+
 #: templates/articles/create.html:35
 msgid "Post"
 msgstr ""
 
-#: templates/user/login.html:28
+#: templates/user/login.html:17 templates/user/login.html:27
 msgid "Login"
+msgstr ""
+
+#: templates/user/login.html:20
+msgid "example@qq.com"
 msgstr ""
 
 #: templates/user/register.html:20 users/forms.py:12
@@ -61,12 +73,24 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: templates/user/register.html:40
-msgid "Register"
+#: templates/user/register.html:28 users/forms.py:14 users/forms.py:25
+msgid "Password"
 msgstr ""
 
-#: users/forms.py:14 users/forms.py:25
-msgid "Password"
+#: templates/user/register.html:32
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/user/register.html:37
+msgid "Check to agree to"
+msgstr ""
+
+#: templates/user/register.html:37
+msgid "terms of services"
+msgstr ""
+
+#: templates/user/register.html:39
+msgid "Register"
 msgstr ""
 
 #: users/forms.py:15
