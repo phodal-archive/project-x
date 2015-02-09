@@ -33,8 +33,9 @@
     </fieldset>
     <fieldset>
         {{ form.accept_tos.label }}
-        {{ render_field(form.accept_tos, class="form-control") }} Check to agree to <a href="">terms of services</a>
+        {{ render_field(form.accept_tos, class="form-control checkbox") }}
+        <span>Check to agree to <a href="">terms of services</a></span>
     </fieldset>
-    <input type="submit" name="register" value="{{ _('Register') }}" class="btn btn-primary"/>
+    <input type="submit" name="register" value="{{ _('Register') }}" class="btn btn-green"/>
 </form>
 {%- endblock %}

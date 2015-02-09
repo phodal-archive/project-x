@@ -44,7 +44,6 @@ select {
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
 }
 
 input[type="radio"],
@@ -60,6 +59,10 @@ input[type="checkbox"] {
   font-style: normal;
   width: 100%;
   margin-bottom: 10px;
+}
+
+fieldset{
+    border: 0;
 }
 
 legend {
@@ -81,3 +84,13 @@ legend {
     background-size: cover;
     height:100%;
 }
+
+.checkbox {
+    display: block;
+    float: left;
+}
+
+input[type="checkbox"].checkbox  {
+    margin: 5px 6px 8px 0;
+}
+
