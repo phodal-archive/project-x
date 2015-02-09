@@ -14,8 +14,11 @@
 </head>
 
 <body id="coming">
-{% if current_user.is_authenticated() %}
-  Hi {{ current_user.name }}!
+{% if not current_user %}
+
+{% else %}
+    <h1>寻ta</h1><img src="{{ url_for('static', filename='xunta.png') }}" />
+    很高兴你能来到寻ta驿站，虽然驿站很小，还不够你喝杯茶。<br/>
 {% endif %}
 </body>
 </html>
