@@ -32,7 +32,7 @@ class Vote(db.EmbeddedDocument):
     up = db.BooleanField(required=True, default=True)
 
 
-class Comments(db.EmbeddedDocument):
+class Comment(db.EmbeddedDocument):
     article = ReferenceField(Article)
     content = db.StringField(max_length=300)
     user = ReferenceField(User)
