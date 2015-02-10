@@ -1,18 +1,15 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from twill.browser import TwillException
-
 from flask_testing import TestCase, Twill
-from twill.commands import formclear, fv, submit, showforms, show, formaction
-import twilltestlib
 
-from xunta import app
+import twilltestlib
+from xunta import create_app
 
 
 class TestViews(TestCase):
     def create_app(self):
-        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        app = create_app()
         self.twill = Twill(app)
         return app
 

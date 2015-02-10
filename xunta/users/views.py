@@ -7,7 +7,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
-from xunta import login_manager, cache, app
+from xunta import login_manager, app
 from xunta.users.User import User
 from xunta.users.forms import RegisterForm, LoginForm
 

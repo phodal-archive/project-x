@@ -2,15 +2,16 @@
 # coding=utf-8
 
 import unittest
-from flask.ext.testing import LiveServerTestCase
 
+from flask.ext.testing import LiveServerTestCase
 from selenium import webdriver
-from xunta import app
+
+from xunta import create_app
 
 
 class Articles(LiveServerTestCase):
     def create_app(self):
-        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        app = create_app()
         return app
 
     def setUp(self):

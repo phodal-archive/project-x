@@ -5,12 +5,13 @@ import unittest
 
 from selenium import webdriver
 from flask_testing import LiveServerTestCase
-from xunta import app
+
+from xunta import create_app
 
 
 class Account(LiveServerTestCase):
     def create_app(self):
-        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        app = create_app()
         return app
 
     def setUp(self):
