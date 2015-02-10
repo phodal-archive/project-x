@@ -31,7 +31,9 @@ def get_article(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
     form = CommentForm(request.form)
-    return render_template("/articles/article_detail.html", article=article, form=form)
+    comment_obj = Comment()
+    all_comments = comment_obj.get_all_comments()
+    return render_template("/articles/article_detail.html", article=article, form=form, comments=all_comments)
 
 
 @articles_mod.route("/articles/<slug>/comment", methods=('GET', 'POST'))

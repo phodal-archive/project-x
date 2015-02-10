@@ -12,6 +12,15 @@
     {{ article.update_at }}
 </div>
 
+<div class="comments">
+{% for comment in comments%}
+    <p>
+    {{ comment.user.name }}
+    {{ comment.content }}
+    {{ comment.created_at }}
+    </p>
+{% endfor %}
+</div>
 
 {% with messages = get_flashed_messages() %}
   {% if messages %}

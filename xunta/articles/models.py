@@ -38,4 +38,4 @@ class Comment(db.Document):
     user = ReferenceField(User)
     vote = db.IntField(required=True, default=0)
     # votes = db.ListField(EmbeddedDocumentField(Vote))
-    created_at = db.DateTimeField(default=datetime.datetime.now)
+    created_at = db.DateTimeField(default=datetime.datetime.now())

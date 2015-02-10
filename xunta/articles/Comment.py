@@ -15,6 +15,10 @@ class Comment():
         else:
             return None
 
+    def get_all_comments(self):
+        all_articles = models.Comment.objects()
+        return all_articles
+
     def save(self):
         comment = models.Comment(article=self.article, content=self.content, user=self.user, vote=self.vote)
         comment.save()
