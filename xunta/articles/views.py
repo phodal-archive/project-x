@@ -5,8 +5,9 @@ from flask import Blueprint, render_template, request, g
 from flask_login import login_required, current_user
 from werkzeug.utils import redirect
 from xunta import cache
+from xunta.articles.Comment import Comment
 
-from xunta.articles.forms import ArticleForm
+from xunta.articles.forms import ArticleForm, CommentForm
 from xunta.articles.Articles import Article, Tag
 
 
@@ -25,18 +26,24 @@ def articles():
 
 
 @articles_mod.route("/articles/<slug>/")
-@cache.cached(100)
+# @cache.cached(100)
 def get_article(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
-    return render_template("/articles/article_detail.html", article=article)
+    form = CommentForm(request.form)
+    return render_template("/articles/article_detail.html", article=article, form=form)
 
 
-@articles_mod.route("/articles/<slug>/comments", methods=('GET', 'POST'))
+@articles_mod.route("/articles/<slug>/comment", methods=('GET', 'POST'))
 def get_comment(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
-    return render_template("/articles/article_detail.html", article=article)
+    form = CommentForm(request.form)
+    if request.method == 'POST' and current_user.is_authenticated():
+        user = current_user.get_mongo_doc()
+        comment = Comment(article=article, content="hello", user=user, vote=1)
+        comment.save()
+    return render_template("/articles/article_detail.html", article=article, form=form)
 
 
 def save_tag(tag):
@@ -59,7 +66,6 @@ def create_articles():
         tag = save_tag(tag)
 
         article = Article(description=content, tag=tag, title=title, content=content, author=user, slug=slug)
-        print article
         url_slug = article.save()
         return redirect("/articles/" + url_slug + "/")
 

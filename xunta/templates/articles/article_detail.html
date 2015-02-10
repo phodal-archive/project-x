@@ -11,4 +11,26 @@
     <p>{{ article.description }}</p>
     {{ article.update_at }}
 </div>
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% from "macros.html" import render_field %}
+<form method="POST" action="/articles/{{ article.slug}}/comment">
+    {{ form.csrf_token }}
+    <input type="hidden" name="next" value="{{ next }}"/>
+    <fieldset>
+        {{ form.content.label }}
+        {{ render_field(form.content, class="form-control", placeholder=_("Comment content")) }}
+    </fieldset>
+    </fieldset>
+    <input type="submit" name="comment" value='{{ _("Comment") }}' class="btn btn-green">
+</form>
 {% endblock %}

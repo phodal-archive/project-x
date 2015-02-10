@@ -18,4 +18,5 @@ class Comment():
     def save(self):
         comment = models.Comment(article=self.article, content=self.content, user=self.user, vote=self.vote)
         comment.save()
+        self.id = comment.id
         return self.id
