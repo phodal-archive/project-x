@@ -71,18 +71,18 @@ def before_request():
 def logout():
     logout_user()
     flash(gettext("Logged out."))
-    return redirect('/login')
+    return redirect(url_for('/login'))
 
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():
-    return redirect('/login')
+    return redirect(url_for('/login'))
 
 
 @login_manager.user_loader
 def load_user(user_id):
     if user_id is None:
-        redirect('/login')
+        redirect(url_for('/login'))
     user = User()
     user.get_by_id(user_id)
     if user.is_active():
