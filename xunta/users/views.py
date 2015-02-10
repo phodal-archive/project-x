@@ -7,7 +7,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
-from xunta import login_manager, app
+from xunta import login_manager
 from xunta.users.User import User
 from xunta.users.forms import RegisterForm, LoginForm
 
@@ -62,7 +62,7 @@ def account(form):
     return render_template('/user/user.html', form=form)
 
 
-@app.before_request
+@users_mod.before_app_request
 def before_request():
     g.user = current_user
 
