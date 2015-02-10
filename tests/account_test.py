@@ -2,6 +2,7 @@
 # coding=utf-8
 
 import unittest
+from mongoengine import connect
 
 from selenium import webdriver
 from flask_testing import LiveServerTestCase
@@ -11,10 +12,12 @@ from xunta import create_app
 
 class Account(LiveServerTestCase):
     def create_app(self):
-        app = create_app()
+        app = create_app('test')
         return app
 
     def setUp(self):
+        db = connect('testing')
+        db.drop_database('testing')
         self.driver = webdriver.Firefox()
 
     def test_create_account(self):
@@ -42,7 +45,7 @@ class Account(LiveServerTestCase):
 
 class Login(LiveServerTestCase):
     def create_app(self):
-        app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+        app = create_app('test')
         return app
 
     def setUp(self):

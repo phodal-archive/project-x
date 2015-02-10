@@ -11,7 +11,7 @@ from xunta import create_app
 
 class Articles(LiveServerTestCase):
     def create_app(self):
-        app = create_app()
+        app = create_app('test')
         return app
 
     def setUp(self):

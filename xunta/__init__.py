@@ -12,10 +12,10 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'users.login'
 
 
-def create_app():
+def create_app(config):
     global app, babel, toolbar, cache, not_found, server_error, frontends_mod, sitemap_mod, db, login_manager, users_mod, articles_mod
     app = Flask(__name__, static_folder='static', static_url_path='')
-    app.config.from_pyfile('config.cfg')
+    app.config.from_pyfile(config + '.cfg')
     babel = Babel(app)
     toolbar = DebugToolbarExtension(app)
     cache = Cache(app)

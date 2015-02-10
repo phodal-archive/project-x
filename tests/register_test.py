@@ -9,7 +9,7 @@ from xunta import create_app
 
 class TestViews(TestCase):
     def create_app(self):
-        app = create_app()
+        app = create_app('test')
         self.twill = Twill(app)
         return app
 
