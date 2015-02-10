@@ -48,7 +48,7 @@ def get_comment(slug):
         user = current_user.get_mongo_doc()
         comment = Comment(article=article, content=form.content.data, user=user, vote=1)
         comment.save()
-    return redirect(url_for("/articles/" + slug + "/"))
+    return redirect(url_for('articles.get_article', slug=slug))
 
 
 def save_tag(tag):
@@ -72,6 +72,6 @@ def create_articles():
 
         article = Article(description=content, tag=tag, title=title, content=content, author=user, slug=slug)
         url_slug = article.save()
-        return redirect(url_for("/articles/" + url_slug + "/"))
+        return redirect(url_for('articles.get_article', slug=slug))
 
     return render_template("/articles/create.html", form=form, current_user=user)
