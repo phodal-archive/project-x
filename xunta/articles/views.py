@@ -29,10 +29,12 @@ def articles():
 # @cache.cached(100)
 def get_article(slug):
     article_obj = Article()
-    article = article_obj.get_article_by_slug(slug)
-    form = CommentForm(request.form)
     comment_obj = Comment()
+
+    form = CommentForm(request.form)
+    article = article_obj.get_article_by_slug(slug)
     all_comments = comment_obj.get_comment_by_article(article)
+
     return render_template("/articles/article_detail.html", article=article, form=form, comments=all_comments)
 
 
