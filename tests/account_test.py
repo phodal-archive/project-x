@@ -17,7 +17,7 @@ class Account(LiveServerTestCase):
         self.driver = webdriver.Firefox()
 
     def test_create_account(self):
-        url = "http://127.0.0.1:5000/register/account"
+        url = "http://localhost:5000/register/account"
         driver = self.driver
         driver.get(url)
         self.assertIn(url, driver.current_url)
@@ -34,7 +34,7 @@ class Account(LiveServerTestCase):
 
         submit_button = driver.find_element_by_name('register')
         submit_button.click()
-        self.assertIn("http://127.0.0.1:5000", driver.current_url)
+        self.assertIn("http://localhost:5000", driver.current_url)
 
     def tearDown(self):
         self.driver.close()
@@ -48,7 +48,7 @@ class Login(LiveServerTestCase):
         self.driver = webdriver.Firefox()
 
     def test_create_articles_redirect(self):
-        url = "http://127.0.0.1:5000/login"
+        url = "http://localhost:5000/login"
         driver = self.driver
         driver.get(url)
         email = driver.find_elements_by_xpath("//input[@name='email']")[0]
@@ -57,7 +57,7 @@ class Login(LiveServerTestCase):
         password.send_keys("selenium@example.com")
         submit_button = driver.find_element_by_name('login')
         submit_button.click()
-        self.assertIn("http://127.0.0.1:5000", driver.current_url)
+        self.assertIn("http://localhost:5000", driver.current_url)
 
     def tearDown(self):
         self.driver.close()

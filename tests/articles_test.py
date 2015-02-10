@@ -17,7 +17,7 @@ class Articles(LiveServerTestCase):
         self.driver = webdriver.Firefox()
 
     def login(self):
-        url = "http://127.0.0.1:5000/login"
+        url = "http://localhost:5000/login"
         driver = self.driver
         driver.get(url)
         email = driver.find_elements_by_xpath("//input[@name='email']")[0]
@@ -26,12 +26,12 @@ class Articles(LiveServerTestCase):
         password.send_keys("selenium@example.com")
         submit_button = driver.find_element_by_name('login')
         submit_button.click()
-        self.assertIn("http://127.0.0.1:5000", driver.current_url)
+        self.assertIn("http://localhost:5000", driver.current_url)
 
     def test_create_articles_redirect(self):
         self.login()
         driver = self.driver
-        driver.get("http://127.0.0.1:5000/create/articles/")
+        driver.get("http://localhost:5000/create/articles/")
         title = driver.find_elements_by_xpath("//input[@name='title']")[0]
         title.send_keys("this is a test")
         tag = driver.find_elements_by_xpath("//input[@name='tag']")[0]
@@ -42,7 +42,7 @@ class Articles(LiveServerTestCase):
         slug.send_keys("hello-world")
         submit_button = driver.find_element_by_name('post')
         submit_button.click()
-        self.assertIn("http://127.0.0.1:5000/articles/hello-world", driver.current_url)
+        self.assertIn("http://localhost:5000/articles/hello-world", driver.current_url)
         assert "this is a test" in driver.title
 
     def tearDown(self):
