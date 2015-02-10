@@ -43,7 +43,7 @@ def get_comment(slug):
         user = current_user.get_mongo_doc()
         comment = Comment(article=article, content="hello", user=user, vote=1)
         comment.save()
-    return render_template("/articles/article_detail.html", article=article, form=form)
+    return redirect("/articles/" + slug + "/")
 
 
 def save_tag(tag):
