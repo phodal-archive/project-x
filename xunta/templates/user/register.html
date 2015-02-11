@@ -31,11 +31,6 @@
         {{ form.confirm.label }}
         {{ render_field(form.confirm, class="form-control", placeholder=_("Confirm Password")) }}
     </fieldset>
-    <fieldset>
-        {{ form.accept_tos.label }}
-        {{ render_field(form.accept_tos, class="form-control checkbox") }}
-        <span>{{ _("Check to agree to") }} <a href="">{{ _("terms of services") }}</a></span>
-    </fieldset>
     <input type="submit" name="register" value="{{ _('Register') }}" class="btn btn-green"/>
 </form>
 {%- endblock %}
