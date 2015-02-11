@@ -7,7 +7,7 @@ from xunta import create_app
 
 class TestSignup(BaseSuite):
     def setUp(self):
-        db = connect('test')
+        db = connect('testing')
         db.drop_database('testing')
         self.app = create_app('test')
         self.app_context = self.app.app_context()

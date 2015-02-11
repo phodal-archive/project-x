@@ -9,7 +9,7 @@ extend_with formfill
 showforms
 formclear 1
 fv 1 name test
-fv 1 email test@tes.com
+fv 1 email test@test.com
 fv 1 password test
 fv 1 confirm test
 formaction 1 __url__

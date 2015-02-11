@@ -2,7 +2,7 @@
 # coding=utf-8
 
 from flask import Blueprint, render_template, request, flash, url_for, g
-from flask_babel import gettext
+from flask_babel import lazy_gettext as _
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
@@ -27,7 +27,7 @@ def login():
                 return redirect(request.form['next'])
             return redirect(url_for('frontends.home'))
 
-        flash(gettext('Wrong email or password', 'danger'))
+        flash(_('Wrong email or password'))
         return redirect(request.args.get("next") or url_for("index"))
     return render_template("/user/login.html", form=form)
 
@@ -46,12 +46,12 @@ def register():
                     flash("Logged in!")
                     return redirect('/')
                 else:
-                    flash(gettext("unable to log you in"))
+                    flash(_("unable to log you in"))
 
             except:
-                flash(gettext("unable to register with that email address"))
+                flash(_("unable to register with that email address"))
         else:
-            flash(gettext("user already in here"))
+            flash(_("user already in here"))
 
     return render_template('/user/register.html', form=form)
 
@@ -72,7 +72,7 @@ def before_request():
 @login_required
 def logout():
     logout_user()
-    flash(gettext("Logged out."))
+    flash(_("Logged out."))
     return redirect(url_for('users.login'))
 
 

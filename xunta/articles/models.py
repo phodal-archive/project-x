@@ -3,7 +3,7 @@
 import datetime
 
 from flask_mongoengine import MongoEngine
-from mongoengine import ReferenceField, EmbeddedDocumentField, ListField
+from mongoengine import ReferenceField
 
 from xunta.users.models import User
 

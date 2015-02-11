@@ -26,7 +26,7 @@ def articles():
 
 
 @articles_mod.route("/articles/<slug>/")
-# @cache.cached(100)
+@cache.cached(100)
 def get_article(slug):
     article_obj = Article()
     comment_obj = Comment()
