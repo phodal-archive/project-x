@@ -36,3 +36,4 @@ class TestViews(TestCase):
         with self.twill as t:
             url = self.twill.url("/login")
             twilltestlib.execute_twill_script('tests/login.twill', initial_url=url)
+            self.assertStatus(self.client.get("/account"), 200)

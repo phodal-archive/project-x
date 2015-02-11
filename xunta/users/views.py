@@ -57,9 +57,12 @@ def register():
     return render_template('/user/register.html', form=form)
 
 
-@users_mod.route('/account', methods='GET')
-def account(form):
-    return render_template('/user/user.html', form=form)
+@users_mod.route('/account')
+def account():
+    user = current_user
+    if current_user.is_authenticated():
+        user = user.get_mongo_doc()
+    return render_template('/user/user.html', current_user=user)
 
 
 @users_mod.before_app_request

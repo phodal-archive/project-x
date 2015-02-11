@@ -1,3 +1,9 @@
-{% if user is defined and user != None%}
+{% extends "base.html" %}
 
-{% endif %}
+{% block title %}
+    User Information
+{% endblock %}
+
+{% block content %}
+    {{ current_user.name }}
+{% endblock %}
