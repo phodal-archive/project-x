@@ -17,7 +17,6 @@ users_mod = Blueprint('users', __name__, template_folder='templates', url_prefix
 
 @users_mod.route("/login", methods=["GET", "POST"])
 def login():
-    
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user_obj = User()

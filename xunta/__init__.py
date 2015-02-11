@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from flask import Flask, render_template
+from flask.ext.wtf import CsrfProtect
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_babel import Babel
 from flask_login import LoginManager
@@ -10,7 +11,7 @@ from flask_cache import Cache
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'users.login'
-
+csrf = CsrfProtect()
 
 def create_app(config):
     global app, babel, toolbar, cache, not_found, server_error, frontends_mod, sitemap_mod, db, login_manager, users_mod, articles_mod
@@ -19,6 +20,7 @@ def create_app(config):
     babel = Babel(app)
     toolbar = DebugToolbarExtension(app)
     cache = Cache(app)
+    csrf.init_app(app)
 
     @app.errorhandler(404)
     def not_found(error):

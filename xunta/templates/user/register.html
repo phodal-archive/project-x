@@ -13,7 +13,7 @@
 
 {% from "macros.html" import render_field %}
 <form method="POST" action="/register/account">
-    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="next" value="{{ next }}"/>
     <fieldset>
         {{ form.name.label }}
