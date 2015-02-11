@@ -1,0 +1,11 @@
+extend_with require
+require success
+
+setlocal init_url __url__
+setlocal redirect_url __log__
+config use_tidy 0
+
+extend_with formfill
+
+go http://127.0.0.1:5000/logout
+url http://127.0.0.1:5000/login
