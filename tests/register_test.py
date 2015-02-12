@@ -16,7 +16,6 @@ class TestViews(TestCase):
     def test_route(self):
         with self.twill as t:
             self.assert200(self.client.get("/"))
-            self.assert200(self.client.get("/sitemap.xml"))
 
             self.assert200(self.client.get("/register/account"))
             self.assert200(self.client.get("/login"))

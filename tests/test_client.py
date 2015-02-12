@@ -30,6 +30,8 @@ class TestSignup(BaseSuite):
     def test_home_page(self):
         response = self.client.get(self.url_for("frontends.home"))
         assert response.status_code is 200
+        response = self.client.get(self.url_for("sitemap.sitemap"))
+        assert response.status_code is 200
 
     def test_register(self):
         self.client.get(self.url_for("users.logout"))
