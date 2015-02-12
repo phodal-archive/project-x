@@ -28,7 +28,7 @@ def login():
             return redirect(url_for('frontends.home'))
 
         flash(gettext('Wrong email or password'))
-        return redirect(request.args.get("next") or url_for("index"))
+        return redirect(request.args.get("next") or url_for("frontends.home"))
     return render_template("/user/login.html", form=form)
 
 
