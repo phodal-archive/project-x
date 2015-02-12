@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from flask import Blueprint, render_template, request, flash, url_for, g
+from flask import Blueprint, render_template, request, flash, url_for, g, session
 from flask_babel import lazy_gettext as _
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -72,6 +72,7 @@ def before_request():
 @login_required
 def logout():
     logout_user()
+    session.clear()
     flash(_("Logged out."))
     return redirect(url_for('users.login'))
 
