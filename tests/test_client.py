@@ -4,6 +4,7 @@ from mongoengine import connect
 from suite import BaseSuite
 from xunta import create_app
 from xunta.articles.Articles import Article, Tag
+from xunta.articles.Comment import Comment
 from xunta.users.User import User
 
 
@@ -53,7 +54,6 @@ class TestSignup(BaseSuite):
 
 
     def prepare_article(self):
-        print self.user.email
         self.client.get(self.url_for("articles.create_articles"))
         tag = Tag(name='tag', description='tag description')
         tag.save()
@@ -67,7 +67,21 @@ class TestSignup(BaseSuite):
         for article in article.get_all_articles():
             assert 'description' in article.description
 
-    def test_articles(self):
+    def test_create_tag(self):
         self.prepare_article()
         response = self.client.get('/articles/hello/')
         assert "hello" in response.data
+
+    def test_prepare_comment(self):
+        self.prepare_article()
+        article_obj = Article()
+        article = article_obj.get_article_by_slug('hello')
+        comment = Comment(article=article,
+                          content="comment",
+                          user=self.user.get_mongo_doc(),
+                          vote=1)
+        comment.save()
+        results = comment.get_all_comments()
+        for result in results:
+            print result.content
+            assert "comment" in result.content

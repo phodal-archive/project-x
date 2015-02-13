@@ -40,7 +40,7 @@ def get_article(slug):
 
 @articles_mod.route("/articles/<slug>/comment", methods=('GET', 'POST'))
 @login_required
-def get_comment(slug):
+def comments(slug):
     article_obj = Article()
     article = article_obj.get_article_by_slug(slug)
     form = CommentForm(request.form)
