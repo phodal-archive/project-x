@@ -6,3 +6,4 @@ requests == 2.5.1
 nose == 1.3.4
 selenium == 2.44.0
 sauceclient == 0.1.0
+coveralls
