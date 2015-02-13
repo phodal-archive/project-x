@@ -66,3 +66,8 @@ class TestSignup(BaseSuite):
         article.save()
         for article in article.get_all_articles():
             assert 'description' in article.description
+
+    def test_articles(self):
+        self.prepare_article()
+        response = self.client.get('/articles/hello/')
+        assert "hello" in response.data
